@@ -1,0 +1,3951 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b1220" id="metaThemeColor">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>MyWeek Pro v3 AI | دستیار جامع درس، آزمون، هوش مصنوعی و ورزش</title>
+<style>
+:root {
+  --bg: #0b1220;
+  --bg-grad: radial-gradient(circle at 15% 15%, #162642 0%, #0b1220 65%);
+  --panel: #131f33;
+  --panel2: #1a2840;
+  --panel3: #223350;
+  --line: #283a56;
+  --text: #f1f6ff;
+  --muted: #93a6c2;
+  --accent: #6da3ff;
+  --accent-glow: rgba(109, 163, 255, 0.35);
+  --green: #4ade80;
+  --yellow: #facc15;
+  --red: #f87171;
+  --nav-h: 68px;
+  --radius: 20px;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
+}
+
+/* ==================== EXPANDED & RICHER THEME PRESETS ==================== */
+body.theme-dark {
+  --bg: #080f1e;
+  --bg-grad: radial-gradient(circle at 12% 12%, #1d3563 0%, #0d1930 48%, #060b16 100%);
+  --panel: rgba(18, 31, 54, 0.88);
+  --panel2: rgba(26, 43, 74, 0.85);
+  --panel3: #243961;
+  --line: rgba(109, 163, 255, 0.22);
+}
+body.theme-light {
+  --bg: #eef4fc;
+  --bg-grad: radial-gradient(circle at 85% 8%, #c9defc 0%, #e6effb 45%, #f8faff 100%);
+  --panel: rgba(255, 255, 255, 0.92);
+  --panel2: #edf3fc;
+  --panel3: #dce7f7;
+  --line: #cad8ee;
+  --text: #122038;
+  --muted: #566a87;
+  --shadow: 0 12px 28px rgba(21, 34, 56, 0.09);
+}
+body.theme-oled {
+  --bg: #000000;
+  --bg-grad: radial-gradient(circle at 50% 0%, #131826 0%, #000000 62%);
+  --panel: #090b10;
+  --panel2: #11151f;
+  --panel3: #191f2e;
+  --line: #232a3d;
+  --text: #ffffff;
+  --muted: #8e99ad;
+  --shadow: 0 12px 34px rgba(0, 0, 0, 0.85);
+}
+body.theme-forest {
+  --bg: #06140f;
+  --bg-grad: radial-gradient(circle at 18% 12%, #134735 0%, #092219 52%, #040d0a 100%);
+  --panel: rgba(14, 38, 30, 0.9);
+  --panel2: rgba(21, 54, 43, 0.86);
+  --panel3: #1d4a3b;
+  --line: rgba(74, 222, 128, 0.24);
+  --text: #ecfdf5;
+  --muted: #88baa8;
+}
+body.theme-sunset {
+  --bg: #170b14;
+  --bg-grad: radial-gradient(circle at 82% 12%, #521d38 0%, #291120 50%, #12070f 100%);
+  --panel: rgba(38, 19, 32, 0.9);
+  --panel2: rgba(54, 26, 45, 0.86);
+  --panel3: #47223b;
+  --line: rgba(251, 146, 60, 0.25);
+  --text: #fff1f5;
+  --muted: #cca0b6;
+}
+body.theme-royal {
+  --bg: #0e091f;
+  --bg-grad: radial-gradient(circle at 15% 15%, #382273 0%, #1b113b 52%, #0a0617 100%);
+  --panel: rgba(27, 19, 56, 0.9);
+  --panel2: rgba(38, 27, 77, 0.86);
+  --panel3: #332466;
+  --line: rgba(192, 132, 252, 0.26);
+  --text: #f5f3ff;
+  --muted: #ada0d6;
+}
+
+/* Top-left Repeating Tab Animation */
+@keyframes liveAnimFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  25% { transform: translateY(-4px) rotate(-6deg) scale(1.08); }
+  50% { transform: translateY(0px) rotate(0deg) scale(1); }
+  75% { transform: translateY(-3px) rotate(6deg) scale(1.08); }
+}
+@keyframes liveOrbRing {
+  0% { transform: scale(0.85); opacity: 0.65; }
+  70% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+@keyframes liveRingSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.tab-live-anim {
+  width: 46px; height: 46px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--panel2), var(--panel3));
+  border: 1.5px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+.tab-live-anim .anim-orb {
+  position: absolute; inset: 4px;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  animation: liveOrbRing 2s infinite ease-out;
+  pointer-events: none;
+}
+.tab-live-anim .anim-ring-2 {
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--accent);
+  opacity: 0.45;
+  animation: liveRingSpin 7s linear infinite;
+  pointer-events: none;
+}
+.tab-live-anim .anim-ico {
+  font-size: 22px;
+  display: inline-block;
+  position: relative; z-index: 2;
+  animation: liveAnimFloat 2.2s infinite ease-in-out;
+}
+.top-settings-btn {
+  width: 44px; height: 44px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--panel2), var(--panel3));
+  border: 1.5px solid var(--line);
+  color: var(--text);
+  font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px var(--accent-glow);
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.top-settings-btn:active { transform: scale(0.9) rotate(35deg); }
+.top-settings-btn.active-set {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+/* ==================== 6 LIVE ANIMATED BACKGROUND & LIGHTING FX ==================== */
+#bgFxCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes textCheckGlow {
+  0% {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff, 0 0 22px var(--accent), 0 0 36px var(--green);
+    transform: scale(1.015);
+  }
+  45% {
+    color: var(--green);
+    text-shadow: 0 0 14px var(--green), 0 0 26px var(--accent);
+    transform: scale(1.005);
+  }
+  100% {
+    color: var(--muted);
+    text-shadow: none;
+    transform: scale(1);
+  }
+}
+
+@keyframes strikeDrawAnim {
+  0% { width: 0%; opacity: 1; }
+  100% { width: 100%; opacity: 0.85; }
+}
+
+.item-title, .sport-title-text, .habit-title-text {
+  position: relative;
+  display: inline-block;
+  transition: color 0.35s ease;
+}
+
+.item-row.just-checked .item-title,
+.sport-card.just-checked .sport-title-text,
+.habit-card.just-checked .habit-title-text {
+  animation: textCheckGlow 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.item-row.done .item-title {
+  text-decoration: none !important;
+  color: var(--muted);
+}
+
+.item-row.done .item-title::after,
+.sport-card.done-card .sport-title-text::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 52%;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+  box-shadow: 0 0 8px var(--accent-glow);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.item-row.just-checked .item-title::after,
+.sport-card.just-checked .sport-title-text::after {
+  animation: strikeDrawAnim 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+.app-shell {
+  position: relative;
+  z-index: 2;
+}
+/* Balanced glass translucency so animated background lighting shines clearly behind cards */
+body.theme-dark .card, body.theme-dark .hero { background: rgba(18, 31, 54, 0.65); backdrop-filter: blur(11px); }
+body.theme-oled .card, body.theme-oled .hero { background: rgba(10, 13, 22, 0.68); backdrop-filter: blur(11px); }
+body.theme-forest .card, body.theme-forest .hero { background: rgba(14, 38, 30, 0.65); backdrop-filter: blur(11px); }
+body.theme-sunset .card, body.theme-sunset .hero { background: rgba(38, 19, 32, 0.65); backdrop-filter: blur(11px); }
+body.theme-royal .card, body.theme-royal .hero { background: rgba(27, 19, 56, 0.65); backdrop-filter: blur(11px); }
+body.theme-light .card, body.theme-light .hero { background: rgba(255, 255, 255, 0.70); backdrop-filter: blur(11px); }
+
+/* Custom Time Picker Grid inside Bottom Sheet */
+.time-wheel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.time-col-box {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 8px;
+  max-height: 190px;
+  overflow-y: auto;
+}
+.time-chip-opt {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  padding: 8px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.time-chip-opt.active {
+  background: var(--accent);
+  color: #071224;
+}
+
+/* Custom Modern Bottom Sheet Picker (Replaces native select for Exam Type, Weakness, Tone) */
+.custom-picker-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--panel2), var(--panel3));
+  color: var(--text);
+  border: 1.5px solid var(--line);
+  border-radius: 13px;
+  padding: 11px 13px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: right;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.custom-picker-btn:active { transform: scale(0.98); }
+.custom-picker-btn .cp-arrow {
+  background: var(--accent);
+  color: #071224;
+  width: 22px; height: 22px;
+  border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 900; flex: none;
+}
+.picker-sheet-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(4, 9, 18, 0.72);
+  backdrop-filter: blur(5px);
+  display: none; align-items: flex-end; justify-content: center;
+  z-index: 3500;
+}
+.picker-sheet-backdrop.open { display: flex; }
+@keyframes sheetSlideUp {
+  0% { transform: translateY(100%); opacity: 0.4; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.picker-sheet {
+  background: var(--panel);
+  border-top: 2px solid var(--accent);
+  border-radius: 24px 24px 0 0;
+  padding: 18px 16px calc(22px + env(safe-area-inset-bottom));
+  width: 100%; max-width: 740px;
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.5);
+  animation: sheetSlideUp 0.26s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.picker-opt {
+  width: 100%;
+  background: var(--panel2);
+  border: 1.5px solid var(--line);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  display: flex; align-items: center; justify-content: space-between;
+  text-align: right;
+  font-size: 13px; font-weight: 700;
+  transition: all 0.18s;
+}
+.picker-opt.selected {
+  border-color: var(--accent);
+  background: var(--panel3);
+  box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  background-image: var(--bg-grad);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: Tahoma, Vazirmatn, system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.35s ease, color 0.3s ease;
+}
+
+.app-shell {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 16px 14px calc(var(--nav-h) + 32px);
+}
+
+/* ==================== ATTRACTIVE ANIMATIONS ==================== */
+@keyframes tabSlideSpring {
+  0% { opacity: 0; transform: translateY(16px) scale(0.985); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes cardStagger {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes popCheck {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(12px, -10px) scale(1.08); }
+}
+@keyframes shimmerSweep {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50% { box-shadow: 0 0 18px 4px var(--accent-glow); }
+}
+
+.tab-view { display: none; }
+.tab-view.active {
+  display: block;
+  animation: tabSlideSpring 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.tab-view.active .card {
+  animation: cardStagger 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.tab-view.active .card:nth-child(1) { animation-delay: 0.03s; }
+.tab-view.active .card:nth-child(2) { animation-delay: 0.08s; }
+.tab-view.active .card:nth-child(3) { animation-delay: 0.13s; }
+.tab-view.active .card:nth-child(4) { animation-delay: 0.18s; }
+
+/* Header */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding: 4px 2px;
+}
+.brand { font-size: 22px; font-weight: 900; letter-spacing: 0.2px; }
+.brand span { color: var(--accent); }
+.subdate { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.status-badge {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 7px 12px;
+  border-radius: 99px;
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; }
+.dot.warn { background: var(--yellow); }
+
+/* Cards */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.3s ease;
+}
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.card-head h2 { font-size: 15.5px; margin: 0; font-weight: 800; }
+.pill {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+/* Hero Banner */
+.hero {
+  background: linear-gradient(135deg, var(--panel2), var(--panel));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 18px;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+/* Decorative circular orb removed as requested */
+.hero h1 { font-size: 18.5px; margin: 0 0 6px; }
+.hero p { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; line-height: 1.6; }
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.kpi {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px 6px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.kpi:active { transform: scale(0.96); }
+.kpi b { display: block; font-size: 19px; color: var(--accent); }
+.kpi small { font-size: 10.5px; color: var(--muted); }
+.progress-track {
+  height: 8px; background: var(--panel3);
+  border-radius: 99px; overflow: hidden; margin-top: 12px; position: relative;
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.progress-fill::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  animation: shimmerSweep 2.2s infinite;
+}
+
+/* Week Selector */
+.days-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.day-btn {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 13px;
+  padding: 9px 2px;
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.day-btn:active { transform: scale(0.92); }
+.day-btn strong { display: block; font-size: 13px; color: var(--text); }
+.day-btn small { font-size: 10px; }
+.day-btn.today { border-color: var(--accent); }
+.day-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #081224;
+  font-weight: bold;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+.day-btn.active strong { color: #081224; }
+
+/* Inputs & Buttons */
+input, select, textarea {
+  width: 100%;
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 12px;
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+label { display: block; font-size: 11.5px; color: var(--muted); margin-bottom: 5px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.full { grid-column: 1 / -1; }
+
+button { cursor: pointer; font: inherit; }
+.btn-primary {
+  background: var(--accent);
+  color: #071224;
+  border: 0;
+  border-radius: 12px;
+  padding: 11px 16px;
+  font-weight: 800;
+  font-size: 13px;
+  transition: transform 0.14s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s;
+}
+.btn-primary:active { transform: scale(0.95); }
+.btn-ghost {
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 9px 12px;
+  font-size: 12px;
+  transition: transform 0.14s, background 0.2s;
+}
+.btn-ghost:active { transform: scale(0.95); }
+.btn-danger {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--red);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 11.5px;
+}
+.btn-success {
+  background: rgba(74, 222, 128, 0.18);
+  color: var(--green);
+  border: 1px solid rgba(74, 222, 128, 0.38);
+  border-radius: 10px;
+  padding: 7px 11px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Task & List Rows */
+.item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  transition: opacity 0.25s ease;
+}
+.item-row:last-child { border-bottom: 0; }
+.item-row input[type="checkbox"] {
+  width: 20px; height: 20px;
+  accent-color: var(--green);
+  flex: none;
+  cursor: pointer;
+}
+.item-row input[type="checkbox"]:checked { animation: popCheck 0.28s ease; }
+.item-body { flex: 1; min-width: 0; }
+.item-title { font-size: 14px; font-weight: 600; word-break: break-word; }
+.item-row.done .item-title { text-decoration: line-through; color: var(--muted); }
+.item-meta { font-size: 11px; color: var(--muted); margin-top: 4px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.badge { padding: 2px 8px; border-radius: 99px; font-size: 10.5px; font-weight: bold; }
+.badge.high { background: rgba(248, 113, 113, 0.18); color: var(--red); }
+.badge.medium { background: rgba(250, 204, 21, 0.18); color: var(--yellow); }
+.badge.low { background: rgba(74, 222, 128, 0.18); color: var(--green); }
+.badge.accent { background: rgba(109, 163, 255, 0.18); color: var(--accent); }
+.mini-btn {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 9px;
+  padding: 6px 9px;
+  font-size: 11.5px;
+}
+
+/* Segmented Sub-tabs */
+.seg-control {
+  display: flex;
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 14px;
+  gap: 4px;
+  overflow-x: auto;
+}
+.seg-btn {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  padding: 8px 6px;
+  border-radius: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.seg-btn.active {
+  background: var(--accent);
+  color: #071224;
+  box-shadow: 0 3px 10px var(--accent-glow);
+}
+
+/* Smart Exam Recommendation Box */
+.ai-suggestion-card {
+  background: linear-gradient(135deg, var(--panel2), var(--panel3));
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 13px;
+  margin-bottom: 10px;
+  position: relative;
+  animation: cardStagger 0.35s ease both;
+}
+.ai-suggestion-card .tag-smart {
+  display: inline-block;
+  background: var(--accent);
+  color: #071224;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-bottom: 6px;
+}
+
+/* Sport Set Chip */
+.sport-card {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 13px;
+  margin-bottom: 10px;
+}
+.sport-pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.sport-stat-chip {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 4px 9px;
+  font-size: 11px;
+  color: var(--text);
+}
+
+/* Jalali Calendar Widget */
+.cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+.cal-dow { font-size: 11px; color: var(--muted); padding: 4px 0; font-weight: bold; }
+.cal-cell {
+  aspect-ratio: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: 11px; font-size: 12.5px;
+  background: var(--panel2); border: 1px solid transparent;
+  cursor: pointer; position: relative; transition: transform 0.15s;
+}
+.cal-cell:active { transform: scale(0.9); }
+.cal-cell.empty { background: transparent; cursor: default; }
+.cal-cell.holiday {
+  border: 1.5px solid var(--red) !important;
+  color: var(--red);
+  font-weight: 800;
+}
+.cal-cell.has-reminder-day {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.26), rgba(16, 185, 129, 0.18));
+  color: var(--green);
+  font-weight: 800;
+}
+.cal-cell.today { border-color: var(--accent); color: var(--accent); font-weight: 800; }
+.cal-cell.selected { background: var(--accent) !important; color: #081224 !important; font-weight: 900; }
+.cal-cell .has-rem {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green); position: absolute; bottom: 4px;
+}
+.cal-cell.selected .has-rem { background: #081224; }
+
+/* Time Clocks */
+.big-clock {
+  font-size: 40px; font-weight: 900; text-align: center; direction: ltr;
+  font-variant-numeric: tabular-nums; color: var(--accent); margin: 14px 0;
+}
+.pomo-ring {
+  width: 190px; height: 190px; border-radius: 50%; margin: 10px auto 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: conic-gradient(var(--accent) var(--deg, 360deg), var(--panel3) 0deg);
+  position: relative;
+}
+.pomo-ring::before { content: ""; position: absolute; inset: 10px; background: var(--panel); border-radius: 50%; }
+.pomo-inner { position: relative; z-index: 1; text-align: center; }
+.pomo-inner .time { font-size: 32px; font-weight: 900; direction: ltr; font-variant-numeric: tabular-nums; }
+.pomo-inner .phase { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* Habits */
+.habit-card {
+  background: var(--panel2); border: 1px solid var(--line); border-radius: 15px;
+  padding: 12px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.habit-check {
+  width: 36px; height: 36px; border-radius: 12px; border: 2px solid var(--accent);
+  background: transparent; color: var(--accent); font-size: 18px;
+  display: flex; align-items: center; justify-content: center; flex: none;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.habit-check.done { background: var(--green); border-color: var(--green); color: #06140c; animation: popCheck 0.3s ease; }
+
+/* Bar Chart */
+.bar-chart {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  height: 150px; gap: 8px; padding-top: 20px; border-bottom: 1px solid var(--line);
+}
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+.bar-fill {
+  width: 100%; max-width: 28px;
+  background: linear-gradient(180deg, var(--accent), rgba(109,163,255,0.3));
+  border-radius: 8px 8px 0 0; min-height: 4px; transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bar-val { font-size: 10px; color: var(--muted); margin-bottom: 4px; }
+.bar-lbl { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+/* Bottom Navigation Bar (7 Tabs) */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0; height: var(--nav-h);
+  background: var(--panel); border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  z-index: 1000; padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -6px 24px rgba(0,0,0,0.28);
+}
+.nav-item {
+  background: transparent; border: 0; color: var(--muted);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; font-size: 9.8px; padding: 4px 1px; position: relative; transition: color 0.2s;
+}
+.nav-item .ico { font-size: 17px; line-height: 1; transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1); }
+.nav-item.active { color: var(--accent); font-weight: 800; }
+.nav-item.active .ico { transform: translateY(-3px) scale(1.15); }
+.nav-item.active::before {
+  content: ""; position: absolute; top: 0; width: 22px; height: 3px;
+  background: var(--accent); border-radius: 0 0 4px 4px;
+}
+
+/* Theme Cards & Swatches */
+.theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.theme-chip {
+  background: var(--panel2); border: 1.5px solid var(--line); border-radius: 12px;
+  padding: 9px 6px; text-align: center; font-size: 11.5px; color: var(--text); font-weight: 700;
+}
+.theme-chip.active { border-color: var(--accent); background: var(--panel3); }
+.swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+.swatch { width: 32px; height: 32px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform 0.18s; }
+.swatch.active { border-color: var(--text); transform: scale(1.15); }
+
+/* Toast & Alarm Modal */
+.toast {
+  position: fixed; top: 16px; left: 50%; transform: translateX(-50%) translateY(-80px);
+  background: var(--panel3); color: var(--text); border: 1px solid var(--accent);
+  padding: 10px 18px; border-radius: 99px; font-size: 12.5px; z-index: 2000;
+  box-shadow: var(--shadow); transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1); white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+.alarm-modal {
+  position: fixed; inset: 0; background: rgba(5, 10, 20, 0.85); backdrop-filter: blur(6px);
+  display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
+}
+.alarm-modal.open { display: flex; }
+.alarm-box {
+  background: var(--panel); border: 2px solid var(--accent); border-radius: 24px;
+  padding: 24px; max-width: 360px; width: 100%; text-align: center; animation: pulseGlow 1.4s infinite;
+}
+
+.empty-state { text-align: center; color: var(--muted); font-size: 12.5px; padding: 18px 10px; line-height: 1.7; }
+.note-item { background: var(--panel2); border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin-bottom: 10px; }
+.note-item h4 { margin: 0 0 6px; font-size: 14px; }
+.note-item p { margin: 0 0 8px; font-size: 12.5px; color: var(--muted); white-space: pre-wrap; line-height: 1.6; }
+</style>
+</head>
+<body>
+<canvas id="bgFxCanvas" aria-hidden="true"></canvas>
+
+<div class="toast" id="toast"></div>
+
+<!-- Real-time Alarm Modal -->
+<div class="alarm-modal" id="alarmModal">
+  <div class="alarm-box">
+    <div style="font-size:44px;margin-bottom:8px">🔔</div>
+    <h2 style="margin:0 0 8px;font-size:19px" id="alarmTitle">یادآور MyWeek</h2>
+    <p style="color:var(--muted);font-size:13.5px;margin:0 0 18px;line-height:1.6" id="alarmBody"></p>
+    <div class="grid-2">
+      <button class="btn-ghost" id="alarmSnooze">یادآوری ۵ دقیقه بعد</button>
+      <button class="btn-primary" id="alarmDismiss">متوجه شدم</button>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Modern Bottom Sheet Picker -->
+<div class="picker-sheet-backdrop" id="pickerSheetBackdrop" onclick="if(event.target===this)closeCustomPicker()">
+  <div class="picker-sheet">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <strong id="pickerSheetTitle" style="font-size:15px">انتخاب گزینه</strong>
+      <button class="mini-btn" type="button" onclick="closeCustomPicker()">✕ بستن</button>
+    </div>
+    <div id="pickerSheetOptions"></div>
+  </div>
+</div>
+
+<div class="app-shell">
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div>
+      <div class="brand">My<span>Week</span> <small style="font-size:11px;color:var(--muted);font-weight:normal">Pro</small></div>
+      <div class="subdate" id="headerJalaliDate"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="tab-live-anim" id="tabLiveAnim" aria-hidden="true">
+        <div class="anim-orb"></div>
+        <div class="anim-ring-2"></div>
+        <span class="anim-ico" id="tabAnimIco">🏠</span>
+      </div>
+      <button class="top-settings-btn" onclick="switchTab('settings')" aria-label="تنظیمات و شخصی‌سازی" title="تنظیمات">
+        ⚙️
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== TAB 1: HOME ==================== -->
+  <main class="tab-view active" id="tab-home">
+    <section class="hero">
+      <h1 id="heroGreeting">سلام! دستیار درس و ورزش تو آماده است</h1>
+      <p id="heroQuote">تداوم در مطالعه و تمرین، نتیجه‌های فوق‌العاده می‌سازد.</p>
+      <div class="kpi-grid">
+        <div class="kpi"><b id="kpiDone">۰</b><small>کارهای امروز</small></div>
+        <div class="kpi"><b id="kpiSportToday">۰</b><small>تمرین‌های امروز</small></div>
+        <div class="kpi"><b id="kpiExamAvg">۰٪</b><small>میانگین آزمون‌ها</small></div>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="heroProgress"></div></div>
+    </section>
+
+    <!-- Pending Smart Exam Suggestions -->
+    <section class="card" id="homeSuggestionsCard" hidden>
+      <div class="card-head">
+        <h2>🧠 پیشنهاد هوشمند مطالعه (تحلیل آزمون)</h2>
+        <span class="pill" id="pendingSugCount">۰ پیشنهاد</span>
+      </div>
+      <div id="homeSuggestionsList"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>📚 برنامه درسی و روزانه امروز</h2>
+        <button class="btn-ghost" onclick="switchTab('plan')">مدیریت کامل</button>
+      </div>
+      <div id="homeTodayTasks"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>🏋️ برنامه ورزشی امروز</h2>
+        <button class="btn-ghost" onclick="switchTab('sport')">باشگاه من</button>
+      </div>
+      <div id="homeTodaySport"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>🔥 عادت‌های امروز</h2>
+        <span class="pill" id="homeHabitSummary">۰ از ۰</span>
+      </div>
+      <div id="homeHabitsList"></div>
+    </section>
+  </main>
+
+  <!-- ==================== TAB 2: PLANNING & EXAM ANALYSIS ==================== -->
+  <main class="tab-view" id="tab-plan">
+    <div class="seg-control" id="planSubTabs">
+      <button class="seg-btn active" data-sub="tasks">📋 هفتگی</button>
+      <button class="seg-btn" data-sub="exams">📝 تحلیل آزمون</button>
+      
+      <button class="seg-btn" data-sub="goals">🎯 اهداف</button>
+      <button class="seg-btn" data-sub="habits">🔄 عادت‌ها</button>
+      <button class="seg-btn" data-sub="notes">📒 یادداشت</button>
+    </div>
+
+    <!-- Sub 2.1: Weekly Tasks -->
+    <div id="sub-tasks">
+      <section class="card">
+        <div class="card-head">
+          <h2>روزهای هفته</h2>
+          <button class="btn-ghost" id="btnGoToday">امروز</button>
+        </div>
+        <div class="days-strip" id="daysStrip"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2 id="selectedDayTitle">کارهای امروز</h2>
+          <span class="pill" id="dayTaskBadge">۰ کار</span>
+        </div>
+        <div id="weeklyTaskList"></div>
+      </section>
+
+      <section class="card" id="taskFormCard">
+        <div class="card-head">
+          <h2 id="taskFormHeading">➕ افزودن فعالیت درسی / روزانه</h2>
+        </div>
+        <form id="taskForm">
+          <div class="grid-2">
+            <div class="full">
+              <label for="tName">عنوان فعالیت</label>
+              <input id="tName" type="text" maxlength="110" placeholder="مثلاً: تست‌زنی مبحث مشتق یا مرور خلاصه‌ها" required>
+            </div>
+            <div>
+              <label>ساعت (اختیاری)</label>
+              <input type="hidden" id="tTime" value="">
+              <button type="button" class="custom-picker-btn" onclick="openCustomTimePicker('tTime')">
+                <span id="tTimePickerLabel">🕒 بدون ساعت</span>
+                <span class="cp-arrow">▾</span>
+              </button>
+            </div>
+            <div>
+              <label>اولویت</label>
+              <input type="hidden" id="tPriority" value="medium">
+              <button type="button" class="custom-picker-btn" onclick="openCustomPicker('tPriority')">
+                <span id="tPriorityPickerLabel">⚡ مهم</span>
+                <span class="cp-arrow">▾</span>
+              </button>
+            </div>
+            <div class="full" style="display:flex;gap:8px;margin-top:4px">
+              <button class="btn-primary" type="submit" id="tSaveBtn" style="flex:1">ثبت در برنامه</button>
+              <button class="btn-ghost" type="button" id="tCancelEdit" hidden>انصراف</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- Sub 2.2: SMART EXAM ANALYZER (TEST & DESCRIPTIVE) -->
+    <div id="sub-exams" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h2>🧠 ثبت و تحلیل هوشمند آزمون</h2>
+          <span class="pill">تستی و تشریحی</span>
+        </div>
+        <form id="examForm" class="grid-2">
+          <div>
+            <label for="exSubject">نام درس</label>
+            <input id="exSubject" type="text" placeholder="مثلاً: ریاضی، فیزیک، زیست" required>
+          </div>
+          <div>
+            <label>نوع آزمون</label>
+            <input type="hidden" id="exType" value="test">
+            <button type="button" class="custom-picker-btn" id="exTypePickerBtn" onclick="openCustomPicker('exType')">
+              <span id="exTypePickerLabel">🔵 تستی (چهارگزینه‌ای)</span>
+              <span class="cp-arrow">▾</span>
+            </button>
+          </div>
+          <div class="full">
+            <label for="exTopic">مبحث سوالات آزمون</label>
+            <input id="exTopic" type="text" placeholder="مثلاً: تابع و معادلات مثلثاتی / فصل ۲" required>
+          </div>
+
+          <!-- Test Mode Handler Fields -->
+          <div id="exTestFields" class="full" style="background:var(--panel2);padding:12px;border-radius:14px;border:1px solid var(--line)">
+            <div class="grid-2">
+              <div>
+                <label for="exTotalQ">تعداد کل تست</label>
+                <input id="exTotalQ" type="number" min="1" value="20">
+              </div>
+              <div>
+                <label for="exTestDuration">زمان صرف‌شده (دقیقه)</label>
+                <input id="exTestDuration" type="number" min="1" value="30">
+              </div>
+              <div>
+                <label for="exCorrect">تعداد درست</label>
+                <input id="exCorrect" type="number" min="0" value="12">
+              </div>
+              <div>
+                <label for="exWrong">تعداد غلط</label>
+                <input id="exWrong" type="number" min="0" value="5">
+              </div>
+            </div>
+          </div>
+
+          <!-- Descriptive Mode Handler Fields -->
+          <div id="exDescFields" class="full" hidden style="background:var(--panel2);padding:12px;border-radius:14px;border:1px solid var(--line)">
+            <div class="grid-2">
+              <div>
+                <label for="exScore">نمره کسب‌شده</label>
+                <input id="exScore" type="number" step="0.25" min="0" value="15.5">
+              </div>
+              <div>
+                <label for="exMaxScore">نمره کل (مثلاً ۲۰)</label>
+                <input id="exMaxScore" type="number" step="0.5" min="1" value="20">
+              </div>
+              <div class="full">
+                <label>علت اصلی کسر نمره در تشریحی</label>
+                <input type="hidden" id="exDescWeakness" value="none">
+                <button type="button" class="custom-picker-btn" id="exDescWeaknessPickerBtn" onclick="openCustomPicker('exDescWeakness')">
+                  <span id="exDescWeaknessPickerLabel">✨ تسلط کامل / بی‌دقتی جزئی</span>
+                  <span class="cp-arrow">▾</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="exRank">رتبه شما در آزمون</label>
+            <input id="exRank" type="number" min="1" placeholder="مثلاً: 14" required>
+          </div>
+          <div>
+            <label for="exParticipants">تعداد کل شرکت‌کنندگان</label>
+            <input id="exParticipants" type="number" min="1" placeholder="مثلاً: 120" required>
+          </div>
+
+          <div class="full">
+            <button class="btn-primary" type="submit" style="width:100%">تحلیل آزمون و تولید پیشنهاد مطالعه</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Pending Suggestions Box -->
+      <section class="card" id="examSugBox" hidden>
+        <div class="card-head">
+          <h2>💡 پیشنهادهای مطالعه برای برنامه روزانه</h2>
+          <span class="pill" id="examSugCountBadge">۰ مورد</span>
+        </div>
+        <div id="examSuggestionsContainer"></div>
+      </section>
+
+      <!-- Subject Progress Overview -->
+      <section class="card">
+        <div class="card-head">
+          <h2>📈 روند پیشرفت در هر درس</h2>
+          <span class="pill">بر اساس آزمون‌ها</span>
+        </div>
+        <div id="subjectProgressList"></div>
+      </section>
+
+      <!-- Recorded Exams History -->
+      <section class="card">
+        <div class="card-head">
+          <h2>🗂 آرشیو آزمون‌های ثبت‌شده</h2>
+          <span class="pill" id="examHistoryCount">۰ آزمون</span>
+        </div>
+        <div id="examHistoryList"></div>
+      </section>
+    </div>
+
+        <!-- Sub 2.2B: AI STUDY & EXAM ASSISTANT -->
+    <div id="sub-ai" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h2>🧠 تحلیل هوشمند عملکرد کل آزمون‌ها</h2>
+          <button class="btn-ghost" type="button" id="aiRunExamAuditBtn">🔄 تحلیل مجدد</button>
+        </div>
+        <div id="aiDeepExamAnalysisContainer"></div>
+      </section>
+    </div><!-- Sub 2.3: Goals -->
+    <div id="sub-goals" hidden>
+      <section class="card">
+        <div class="card-head"><h2>🎯 ثبت هدف جدید</h2></div>
+        <form id="goalForm" class="grid-2">
+          <div class="full">
+            <label for="gTitle">عنوان هدف</label>
+            <input id="gTitle" type="text" placeholder="مثلاً: رساندن درصد فیزیک به ۷۰٪" required>
+          </div>
+          <div>
+            <label>بازه زمانی</label>
+            <input type="hidden" id="gScope" value="weekly">
+            <button type="button" class="custom-picker-btn" onclick="openCustomPicker('gScope')">
+              <span id="gScopePickerLabel">🗓 هفتگی</span>
+              <span class="cp-arrow">▾</span>
+            </button>
+          </div>
+          <div>
+            <label for="gProgress">پیشرفت اولیه (٪)</label>
+            <input id="gProgress" type="number" min="0" max="100" value="0">
+          </div>
+          <div class="full">
+            <button class="btn-primary" type="submit" style="width:100%">افزودن هدف</button>
+          </div>
+        </form>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>لیست اهداف من</h2><span class="pill" id="goalsCountBadge">۰ هدف</span></div>
+        <div id="goalsList"></div>
+      </section>
+    </div>
+
+    <!-- Sub 2.4: Habits -->
+    <div id="sub-habits" hidden>
+      <section class="card">
+        <div class="card-head"><h2>🔄 ساخت عادت جدید</h2></div>
+        <form id="habitForm" class="grid-2">
+          <div class="full">
+            <label for="hName">عنوان عادت روزانه</label>
+            <input id="hName" type="text" placeholder="مثلاً: مرور لغات زبان یا ۳۰ دقیقه مطالعه قبل خواب" required>
+          </div>
+          <div>
+            <label>هدف هفتگی</label>
+            <input type="hidden" id="hTarget" value="7">
+            <button type="button" class="custom-picker-btn" onclick="openCustomPicker('hTarget')">
+              <span id="hTargetPickerLabel">🔄 هر روز (۷ روز)</span>
+              <span class="cp-arrow">▾</span>
+            </button>
+          </div>
+          <div style="display:flex;align-items:flex-end">
+            <button class="btn-primary" type="submit" style="width:100%">ثبت عادت</button>
+          </div>
+        </form>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>پیگیری عادت‌ها و زنجیره (Streak)</h2></div>
+        <div id="habitsFullList"></div>
+      </section>
+    </div>
+
+    <!-- Sub 2.5: Notes -->
+    <div id="sub-notes" hidden>
+      <section class="card">
+        <div class="card-head"><h2 id="noteFormTitle">📒 یادداشت درسی / شخصی جدید</h2></div>
+        <form id="noteForm">
+          <div style="margin-bottom:9px">
+            <label for="nTitle">عنوان یادداشت</label>
+            <input id="nTitle" type="text" placeholder="موضوع یادداشت..." required>
+          </div>
+          <div style="margin-bottom:10px">
+            <label for="nBody">متن یادداشت</label>
+            <textarea id="nBody" rows="4" placeholder="فرمول‌ها، نکات کلیدی یا خلاصه درس..." required></textarea>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn-primary" type="submit" id="nSaveBtn" style="flex:1">ذخیره یادداشت</button>
+            <button class="btn-ghost" type="button" id="nCancelBtn" hidden>لغو</button>
+          </div>
+        </form>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>دفترچه یادداشت</h2><span class="pill" id="notesCount">۰ یادداشت</span></div>
+        <div id="notesList"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==================== TAB 3: DEDICATED SPORT ASSISTANT ==================== -->
+  <main class="tab-view" id="tab-sport">
+    <section class="hero" style="margin-bottom:14px">
+      <h1>🏋️ دستیار اختصاصی ورزش و تناسب اندام</h1>
+      <p>برنامه‌های تمرینی، ست‌ها، رکوردها و یادداشت‌های ورزشی کاملاً جدا از بخش درسی ثبت می‌شوند.</p>
+      <div class="kpi-grid">
+        <div class="kpi"><b id="spDoneWeek">۰</b><small>تمرین انجام‌شده هفته</small></div>
+        <div class="kpi"><b id="spTotalMins">۰</b><small>دقیقه تمرین کل</small></div>
+        <div class="kpi"><b id="spWeightLatest">--</b><small>آخرین وزن (kg)</small></div>
+      </div>
+    </section>
+
+    <div class="seg-control" id="sportSubTabs">
+      <button class="seg-btn active" data-spsub="workouts">💪 برنامه تمرینی</button>
+      <button class="seg-btn" data-spsub="body">📏 ثبت رکورد و وزن</button>
+      <button class="seg-btn" data-spsub="spnotes">🗒 یادداشت ورزشی</button>
+    </div>
+
+    <!-- Sport Sub 1: Workouts -->
+    <div id="spsub-workouts">
+      <section class="card">
+        <div class="card-head">
+          <h2>روزهای تمرین هفته</h2>
+          <button class="btn-ghost" id="btnSportToday">امروز</button>
+        </div>
+        <div class="days-strip" id="sportDaysStrip"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2 id="sportDayTitle">تمرین‌های امروز</h2>
+          <span class="pill" id="sportDayBadge">۰ حرکت</span>
+        </div>
+        <div id="sportWorkoutList"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>➕ افزودن حرکت / تمرین جدید</h2></div>
+        <form id="sportForm" class="grid-2">
+          <div class="full">
+            <label for="spName">نام حرکت یا رشته ورزشی</label>
+            <input id="spName" type="text" placeholder="مثلاً: پرس سینه هالتر، دویدن استقامتی، شنا سوئدی" required>
+          </div>
+          <div>
+            <label>دسته‌بندی</label>
+            <input type="hidden" id="spCategory" value="بدنسازی / قدرتی">
+            <button type="button" class="custom-picker-btn" onclick="openCustomPicker('spCategory')">
+              <span id="spCategoryPickerLabel">🏋️ بدنسازی / قدرتی</span>
+              <span class="cp-arrow">▾</span>
+            </button>
+          </div>
+          <div>
+            <label for="spDuration">مدت تمرین (دقیقه)</label>
+            <input id="spDuration" type="number" min="1" value="15">
+          </div>
+          <div>
+            <label for="spSets">تعداد ست × تکرار</label>
+            <input id="spSets" type="text" placeholder="مثلاً: 4 × 12">
+          </div>
+          <div>
+            <label for="spWeight">وزنه / شدت (اختیاری)</label>
+            <input id="spWeight" type="text" placeholder="مثلاً: 40 کیلوگرم">
+          </div>
+          <div class="full">
+            <button class="btn-primary" type="submit" style="width:100%">ثبت در برنامه ورزشی</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- Sport Sub 2: Body & PR Records -->
+    <div id="spsub-body" hidden>
+      <section class="card">
+        <div class="card-head"><h2>📏 ثبت وزن و رکوردهای ورزشی</h2></div>
+        <form id="sportMetricForm" class="grid-2">
+          <div>
+            <label for="smWeight">وزن بدن (کیلوگرم)</label>
+            <input id="smWeight" type="number" step="0.1" placeholder="مثلاً: 72.5" required>
+          </div>
+          <div>
+            <label for="smNote">رکورد یا توضیح (مثلاً: رکورد ددلیفت یا ۵ کیلومتر دو)</label>
+            <input id="smNote" type="text" placeholder="مثلاً: ۵ کیلومتر در ۲۴ دقیقه">
+          </div>
+          <div class="full">
+            <button class="btn-primary" type="submit" style="width:100%">ثبت رکورد جدید</button>
+          </div>
+        </form>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>تاریخچه وزن و رکوردها</h2></div>
+        <div id="sportMetricsList"></div>
+      </section>
+    </div>
+
+    <!-- Sport Sub 3: Dedicated Sport Notes -->
+    <div id="spsub-spnotes" hidden>
+      <section class="card">
+        <div class="card-head"><h2>🗒 یادداشت و برنامه تغذیه ورزشی</h2></div>
+        <form id="sportNoteForm">
+          <div style="margin-bottom:9px">
+            <label for="snTitle">عنوان (مثلاً: برنامه مکمل‌ها یا رژیم روز تمرین)</label>
+            <input id="snTitle" type="text" required>
+          </div>
+          <div style="margin-bottom:10px">
+            <label for="snBody">جزئیات</label>
+            <textarea id="snBody" rows="4" required></textarea>
+          </div>
+          <button class="btn-primary" type="submit" style="width:100%">ذخیره در دفترچه ورزش</button>
+        </form>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>یادداشت‌های ورزشی ذخیره‌شده</h2></div>
+        <div id="sportNotesList"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==================== TAB 4: REMINDERS & JALALI CALENDAR ==================== -->
+  <main class="tab-view" id="tab-reminders">
+    <section class="card">
+      <div class="card-head">
+        <h2>📅 تقویم شمسی هوشمند</h2>
+        <button class="btn-ghost" id="calTodayBtn">برو به امروز</button>
+      </div>
+      <div class="cal-header">
+        <button class="mini-btn" id="calPrevMonth">◀ ماه قبل</button>
+        <strong id="calMonthTitle" style="font-size:14px"></strong>
+        <button class="mini-btn" id="calNextMonth">ماه بعد ▶</button>
+      </div>
+      <div class="cal-grid" id="calDowRow"></div>
+      <div class="cal-grid" id="calDaysGrid" style="margin-top:4px"></div>
+      <div style="margin-top:10px;font-size:12px;color:var(--accent);text-align:center" id="selectedJalaliLabel"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>🔔 ثبت یادآور جدید (با زنگ و لرزش)</h2></div>
+      <form id="reminderForm" class="grid-2">
+        <div class="full">
+          <label for="rTitle">عنوان یادآور</label>
+          <input id="rTitle" type="text" placeholder="مثلاً: شروع آزمون آزمایشی، تمرین پا، مصرف مکمل" required>
+        </div>
+        <div>
+          <label for="rDate">تاریخ شمسی انتخاب‌شده</label>
+          <input id="rDate" type="text" readonly style="background:var(--panel3);font-weight:bold;text-align:center">
+        </div>
+        <div>
+          <label>ساعت دقیق اعلان</label>
+          <input type="hidden" id="rTime" value="08:00">
+          <button type="button" class="custom-picker-btn" onclick="openCustomTimePicker('rTime', true)">
+            <span id="rTimePickerLabel">⏰ ۰۸:۰۰</span>
+            <span class="cp-arrow">▾</span>
+          </button>
+        </div>
+        <div>
+          <label>تکرار</label>
+          <input type="hidden" id="rRepeat" value="once">
+          <button type="button" class="custom-picker-btn" onclick="openCustomPicker('rRepeat')">
+            <span id="rRepeatPickerLabel">🔁 یک‌بار</span>
+            <span class="cp-arrow">▾</span>
+          </button>
+        </div>
+        <div style="display:flex;align-items:flex-end">
+          <button class="btn-primary" type="submit" style="width:100%">ثبت یادآور</button>
+        </div>
+      </form>
+      <div style="margin-top:12px;padding:10px;background:var(--panel2);border-radius:12px;font-size:11.5px;color:var(--muted);line-height:1.7">
+        💡 برای دریافت اعلان در حالت بسته بودن برنامه، از منوی کروم گزینه <b>Add to Home screen</b> را بزنید و مجوز اعلان را تایید کنید.
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn-primary" type="button" id="btnReqNotif" style="padding:7px 12px;font-size:11.5px">فعال‌سازی مجوز اعلان</button>
+          <button class="btn-ghost" type="button" id="btnTestAlarm" style="padding:7px 12px;font-size:11.5px">🔊 تست صدا و لرزش</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>لیست یادآورهای فعال</h2>
+        <span class="pill" id="remCountBadge">۰ یادآور</span>
+      </div>
+      <div id="remindersList"></div>
+    </section>
+  </main>
+
+  <!-- ==================== TAB 5: TIME MANAGEMENT ==================== -->
+  <main class="tab-view" id="tab-time">
+    <div class="seg-control" id="timeSubTabs">
+      <button class="seg-btn active" data-tsub="pomo">🍅 پومودورو</button>
+      <button class="seg-btn" data-tsub="countdown">⏳ تایمر معکوس</button>
+      <button class="seg-btn" data-tsub="stopwatch">⏱ کرنومتر</button>
+    </div>
+
+    <section class="card" id="tsub-pomo">
+      <div class="card-head">
+        <h2>تمرکز عمیق (پومودورو)</h2>
+        <span class="pill" id="pomoSessionCount">۰ جلسه</span>
+      </div>
+      <div class="pomo-ring" id="pomoRing">
+        <div class="pomo-inner">
+          <div class="time" id="pomoClock">25:00</div>
+          <div class="phase" id="pomoPhaseLabel">زمان تمرکز</div>
+        </div>
+      </div>
+      <div class="grid-3" style="margin-bottom:10px">
+        <button class="btn-ghost" onclick="setPomoMode('focus', 25)">تمرکز ۲۵د</button>
+        <button class="btn-ghost" onclick="setPomoMode('short', 5)">استراحت ۵د</button>
+        <button class="btn-ghost" onclick="setPomoMode('long', 15)">استراحت ۱۵د</button>
+      </div>
+      <div class="grid-2" style="margin-bottom:12px;align-items:end">
+        <div>
+          <label for="customPomoMins">مدت دلخواه (دقیقه)</label>
+          <input id="customPomoMins" type="number" min="1" max="180" value="45" placeholder="مثلاً: 45">
+        </div>
+        <div style="display:flex;gap:6px">
+          <button class="btn-ghost" type="button" style="flex:1" onclick="applyCustomPomo('focus')">تنظیم تمرکز</button>
+          <button class="btn-ghost" type="button" style="flex:1" onclick="applyCustomPomo('short')">استراحت</button>
+        </div>
+      </div>
+      <div class="grid-2">
+        <button class="btn-primary" id="pomoToggleBtn">▶ شروع تمرکز</button>
+        <button class="btn-ghost" id="pomoResetBtn">ریست</button>
+      </div>
+    </section>
+
+    <section class="card" id="tsub-countdown" hidden>
+      <div class="card-head"><h2>⏳ تایمر معکوس (آزمون یا استراحت بین ست‌ها)</h2></div>
+      <div class="grid-3" style="margin-bottom:10px">
+        <div><label>ساعت</label><input id="cdHour" type="number" min="0" max="23" value="0"></div>
+        <div><label>دقیقه</label><input id="cdMin" type="number" min="0" max="59" value="10"></div>
+        <div><label>ثانیه</label><input id="cdSec" type="number" min="0" max="59" value="0"></div>
+      </div>
+      <div class="big-clock" id="cdDisplay">00:10:00</div>
+      <div class="grid-2">
+        <button class="btn-primary" id="cdStartBtn">▶ شروع</button>
+        <button class="btn-ghost" id="cdResetBtn">ریست</button>
+      </div>
+    </section>
+
+    <section class="card" id="tsub-stopwatch" hidden>
+      <div class="card-head"><h2>⏱ کرنومتر دقیق</h2></div>
+      <div class="big-clock" id="swDisplay">00:00.0</div>
+      <div class="grid-3" style="margin-bottom:12px">
+        <button class="btn-primary" id="swStartBtn">▶ شروع</button>
+        <button class="btn-ghost" id="swLapBtn">ثبت دور</button>
+        <button class="btn-ghost" id="swResetBtn">ریست</button>
+      </div>
+      <div id="swLapsList" style="max-height:180px;overflow-y:auto"></div>
+    </section>
+  </main>
+
+  <!-- ==================== TAB 6: STATISTICS ==================== -->
+  <main class="tab-view" id="tab-stats">
+    <section class="card">
+      <div class="card-head"><h2>📊 خلاصه عملکرد درس، آزمون و ورزش</h2></div>
+      <div class="kpi-grid">
+        <div class="kpi"><b id="stTotalDone">۰</b><small>کارهای انجام‌شده</small></div>
+        <div class="kpi"><b id="stFocusMins">۰</b><small>دقیقه تمرکز</small></div>
+        <div class="kpi"><b id="stSportMins">۰</b><small>دقیقه ورزش هفته</small></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>نمودار تکمیل کارها در هفته</h2>
+        <span class="pill">شنبه تا جمعه</span>
+      </div>
+      <div class="bar-chart" id="weeklyBarChart"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>پیشرفت درسی بر اساس آزمون‌ها</h2></div>
+      <div id="statsSubjectsBreakdown"></div>
+    </section>
+  </main>
+
+  <!-- ==================== TAB 7: SETTINGS & THEMES ==================== -->
+  <main class="tab-view" id="tab-settings">
+    <section class="card">
+      <div class="card-head"><h2>🎨 تم‌های حرفه‌ای و رنگ‌بندی</h2></div>
+      <div style="margin-bottom:14px">
+        <label>انتخاب تم پس‌زمینه</label>
+        <div class="theme-grid" id="themeGrid">
+          <button class="theme-chip" data-th="dark">🌑 شب آبی</button>
+          <button class="theme-chip" data-th="light">☀️ روز روشن</button>
+          <button class="theme-chip" data-th="oled">🖤 مشکی مطلق</button>
+          <button class="theme-chip" data-th="forest">🌲 جنگل زمردی</button>
+          <button class="theme-chip" data-th="sunset">🌅 غروب گرم</button>
+          <button class="theme-chip" data-th="royal">🔮 بنفش سلطنتی</button>
+        </div>
+      </div>
+      <div style="margin-bottom:14px">
+        <label>✨ طرح و افکت متحرک پس‌زمینه (۶ حالت ویژه)</label>
+        <div class="theme-grid" id="bgFxGrid">
+          <button class="theme-chip" data-fx="neon">💫 نور نئونی دور صفحه</button>
+          <button class="theme-chip" data-fx="aurora">🌌 شفق قطبی متحرک</button>
+          <button class="theme-chip" data-fx="cyber">🌐 شبکه سایبرپانک</button>
+          <button class="theme-chip" data-fx="particles">✨ ذرات کهکشانی</button>
+          <button class="theme-chip" data-fx="waves">🌊 امواج نوری</button>
+          <button class="theme-chip" data-fx="spotlight">🔦 هاله نور متحرک</button>
+        </div>
+      </div>
+      <div>
+        <label>رنگ تاکیدی (Accent Color)</label>
+        <div class="swatches" id="colorSwatches"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>🔔 تنظیمات اعلان، صدا و لرزش</h2></div>
+      <div class="item-row">
+        <div class="item-body">
+          <div class="item-title">پخش صدای زنگ هشدار</div>
+          <div class="item-meta">تولید ملودی هشدار هنگام رسیدن زمان یادآور</div>
+        </div>
+        <input type="checkbox" id="setSound" checked>
+      </div>
+      <div class="item-row">
+        <div class="item-body">
+          <div class="item-title">لرزش گوشی (Vibration)</div>
+          <div class="item-meta">لرزش الگودار روی گوشی‌های اندروید</div>
+        </div>
+        <input type="checkbox" id="setVibrate" checked>
+      </div>
+      <div class="item-row">
+        <div class="item-body">
+          <div class="item-title">📌 اعلان دائمی برنامه روزانه (نوار اعلان گوشی)</div>
+          <div class="item-meta">نمایش مداوم تاریخ، یادآورها، کارهای درسی و ورزشی امروز با نوار پیشرفت حتی هنگام بسته بودن برنامه</div>
+        </div>
+        <input type="checkbox" id="setPersistentNotif" checked>
+      </div>
+      <div style="margin-top:10px">
+        <label>نوع زنگ هشدار</label>
+        <input type="hidden" id="setTone" value="chime">
+        <button type="button" class="custom-picker-btn" id="setTonePickerBtn" onclick="openCustomPicker('setTone')">
+          <span id="setTonePickerLabel">🎵 زنگ ملایم و حرفه‌ای (Chime)</span>
+          <span class="cp-arrow">▾</span>
+        </button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Bottom Navigation Bar (6 Tabs) -->
+<nav class="bottom-nav" aria-label="ناوبری اصلی">
+  <button class="nav-item active" data-tab="home" onclick="switchTab('home')"><span class="ico">🏠</span><span>خانه</span></button>
+  <button class="nav-item" data-tab="plan" onclick="switchTab('plan')"><span class="ico">📚</span><span>درس/برنامه</span></button>
+  <button class="nav-item" data-tab="sport" onclick="switchTab('sport')"><span class="ico">🏋️</span><span>ورزش</span></button>
+  <button class="nav-item" data-tab="reminders" onclick="switchTab('reminders')"><span class="ico">🔔</span><span>یادآور</span></button>
+  <button class="nav-item" data-tab="time" onclick="switchTab('time')"><span class="ico">⏱</span><span>زمان</span></button>
+  <button class="nav-item" data-tab="stats" onclick="switchTab('stats')"><span class="ico">📊</span><span>آمار</span></button>
+</nav>
+
+<script>
+/* ==========================================================================
+   1. JALALI (SHAMSI) CALENDAR ENGINE
+   ========================================================================== */
+const Jalali = {
+  months: ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'],
+  weekDays: ['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'],
+  weekShort: ['ش','ی','د','س','چ','پ','ج'],
+  toJalali(gy, gm, gd) {
+    const g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+    let gy2 = (gm > 2) ? (gy + 1) : gy;
+    let days = 355666 + (365 * gy) + Math.floor((gy2 + 3) / 4) - Math.floor((gy2 + 99) / 100) + Math.floor((gy2 + 399) / 400) + gd + g_d_m[gm - 1];
+    let jy = -1595 + (33 * Math.floor(days / 12053));
+    days %= 12053;
+    jy += 4 * Math.floor(days / 1461);
+    days %= 1461;
+    if (days > 365) { jy += Math.floor((days - 1) / 365); days = (days - 1) % 365; }
+    let jm = (days < 186) ? 1 + Math.floor(days / 31) : 7 + Math.floor((days - 186) / 30);
+    let jd = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
+    return { jy, jm, jd };
+  },
+  toGregorian(jy, jm, jd) {
+    jy += 1595;
+    let days = -355668 + (365 * jy) + (Math.floor(jy / 33) * 8) + Math.floor(((jy % 33) + 3) / 4) + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+    let gy = 400 * Math.floor(days / 146097);
+    days %= 146097;
+    if (days > 36524) { gy += 100 * Math.floor(--days / 36524); days %= 36524; if (days >= 365) days++; }
+    gy += 4 * Math.floor(days / 1461);
+    days %= 1461;
+    if (days > 365) { gy += Math.floor((days - 1) / 365); days = (days - 1) % 365; }
+    let gd = days + 1;
+    const sal_a = [0, 31, ((gy % 4 === 0 && gy % 100 !== 0) || (gy % 400 === 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let gm = 0;
+    for (gm = 0; gm < 13 && gd > sal_a[gm]; gm++) gd -= sal_a[gm];
+    return { gy, gm, gd };
+  },
+  isLeap(jy) { return (((((jy - 474) % 2820) + 2820) % 2820 + 474 + 38) * 682) % 2816 < 682; },
+  monthLength(jy, jm) { return jm <= 6 ? 31 : (jm <= 11 ? 30 : (this.isLeap(jy) ? 30 : 29)); },
+  today() { const d = new Date(); return this.toJalali(d.getFullYear(), d.getMonth() + 1, d.getDate()); },
+  format(j) { return `${j.jy}/${String(j.jm).padStart(2,'0')}/${String(j.jd).padStart(2,'0')}`; },
+  formatLong(j) {
+    const g = this.toGregorian(j.jy, j.jm, j.jd);
+    const dt = new Date(g.gy, g.gm - 1, g.gd);
+    const dow = this.weekDays[(dt.getDay() + 1) % 7];
+    return `${dow} ${faNum(j.jd)} ${this.months[j.jm - 1]} ${faNum(j.jy)}`;
+  }
+};
+
+const faNum = n => new Intl.NumberFormat('fa-IR').format(n);
+const esc = s => String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const todayDayIdx = (new Date().getDay() + 1) % 7;
+
+/* ==========================================================================
+   2. STATE MANAGEMENT & SEAMLESS DATA PRESERVATION (V1 & V2 -> V3)
+   ========================================================================== */
+const DB_KEY = 'myweek_pro_v2'; // Kept identical so v2 data loads directly!
+const defaultState = {
+  tasks: { 0:[], 1:[], 2:[], 3:[], 4:[], 5:[], 6:[] },
+  goals: [],
+  habits: [],
+  notes: [],
+  reminders: [],
+  exams: [],
+  examSuggestions: [],
+  sport: {
+    workouts: { 0:[], 1:[], 2:[], 3:[], 4:[], 5:[], 6:[] },
+    metrics: [],
+    notes: []
+  },
+  stats: { focusMinutes: 0, pomoSessions: 0, lastFocusDate: '' },
+  settings: {
+    theme: 'dark',
+    accent: '#6da3ff',
+    sound: true,
+    vibrate: true,
+    tone: 'chime',
+    persistentNotification: true
+  }
+};
+
+let state = JSON.parse(JSON.stringify(defaultState));
+
+function loadAndMigrateData() {
+  try {
+    const saved = localStorage.getItem(DB_KEY);
+    if (saved) {
+      const p = JSON.parse(saved);
+      state = {
+        ...defaultState,
+        ...p,
+        tasks: { ...defaultState.tasks, ...(p.tasks || {}) },
+        exams: Array.isArray(p.exams) ? p.exams : [],
+        examSuggestions: Array.isArray(p.examSuggestions) ? p.examSuggestions : [],
+        sport: {
+          workouts: { ...defaultState.sport.workouts, ...((p.sport && p.sport.workouts) || {}) },
+          metrics: (p.sport && Array.isArray(p.sport.metrics)) ? p.sport.metrics : [],
+          notes: (p.sport && Array.isArray(p.sport.notes)) ? p.sport.notes : []
+        },
+        stats: { ...defaultState.stats, ...(p.stats || {}) },
+        settings: { ...defaultState.settings, ...(p.settings || {}) }
+      };
+    }
+
+    // Legacy v1 migration if any
+    const v1TasksRaw = localStorage.getItem('myweek_tasks_v1');
+    const migratedFlag = localStorage.getItem('myweek_v1_migrated');
+    if (!migratedFlag && v1TasksRaw) {
+      const v1Tasks = JSON.parse(v1TasksRaw);
+      for (let d = 0; d < 7; d++) {
+        if (Array.isArray(v1Tasks[d])) {
+          v1Tasks[d].forEach(old => {
+            state.tasks[d].push({ id: old.id || uid(), name: old.name, time: old.time || '', priority: old.priority || 'medium', done: !!old.done });
+          });
+        }
+      }
+      localStorage.setItem('myweek_v1_migrated', 'true');
+      saveState();
+    }
+  } catch (e) { console.error(e); }
+}
+
+function saveState() {
+  localStorage.setItem(DB_KEY, JSON.stringify(state));
+  syncRemindersWithServiceWorker();
+      navigator.serviceWorker.ready.then(() => syncPersistentDailyNotification());
+}
+
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(window._toastT);
+  window._toastT = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+/* ==========================================================================
+   3. ANDROID BACKGROUND SERVICE WORKER & PWA
+   ========================================================================== */
+let swRegistration = null;
+async function initAndroidPWAAndWorker() {
+  const manifest = {
+    name: "MyWeek Pro - دستیار درس و ورزش",
+    short_name: "MyWeek",
+    start_url: ".",
+    display: "standalone",
+    background_color: "#0b1220",
+    theme_color: state.settings.accent,
+    icons: [{
+      src: "data:image/svg+xml;base64," + btoa('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="42" fill="#131f33"/><text x="96" y="122" font-size="95" text-anchor="middle" fill="#6da3ff" font-family="sans-serif" font-weight="bold">M</text></svg>'),
+      sizes: "192x192", type: "image/svg+xml"
+    }]
+  };
+  const link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = URL.createObjectURL(new Blob([JSON.stringify(manifest)], { type: 'application/json' }));
+  document.head.appendChild(link);
+
+  if ('serviceWorker' in navigator) {
+    const swCode = `
+      let scheduledReminders = [];
+      let persistentPayload = null;
+      self.addEventListener('install', e => self.skipWaiting());
+      self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
+      self.addEventListener('message', event => {
+        if (!event.data) return;
+        if (event.data.type === 'SYNC_REMINDERS') {
+          scheduledReminders = event.data.reminders || [];
+          checkDue();
+        }
+        if (event.data.type === 'SYNC_PERSISTENT_NOTIF') {
+          persistentPayload = event.data.payload;
+          renderPersistentNotification();
+        }
+      });
+      self.addEventListener('notificationclose', event => {
+        if (event.notification && event.notification.tag === 'myweek-persistent-daily' && persistentPayload && persistentPayload.enabled) {
+          setTimeout(renderPersistentNotification, 800);
+        }
+      });
+      self.addEventListener('notificationclick', event => {
+        if (event.notification && event.notification.tag === 'myweek-persistent-daily') {
+          event.notification.close();
+          event.waitUntil(
+            self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clients => {
+              if (clients && clients.length > 0) return clients[0].focus();
+              return self.clients.openWindow('.');
+            }).finally(() => setTimeout(renderPersistentNotification, 600))
+          );
+        }
+      });
+      function renderPersistentNotification() {
+        if (!persistentPayload || !persistentPayload.enabled) {
+          self.registration.getNotifications({ tag: 'myweek-persistent-daily' }).then(list => list.forEach(n => n.close()));
+          return;
+        }
+        self.registration.showNotification(persistentPayload.title, {
+          body: persistentPayload.body,
+          icon: persistentPayload.icon,
+          badge: persistentPayload.icon,
+          tag: 'myweek-persistent-daily',
+          renotify: false,
+          silent: true,
+          ongoing: true,
+          requireInteraction: true
+        });
+      }
+      function checkDue() {
+        const now = Date.now();
+        scheduledReminders.forEach(r => {
+          if (!r.fired && r.triggerAt <= now && (now - r.triggerAt) < 3600000) {
+            r.fired = true;
+            self.registration.showNotification('🔔 یادآور MyWeek', {
+              body: r.title + ' (' + r.time + ')',
+              vibrate: [300, 150, 300, 150, 400],
+              tag: r.id,
+              requireInteraction: true
+            });
+          }
+        });
+      }
+      setInterval(checkDue, 15000);
+    `;
+    try {
+      swRegistration = await navigator.serviceWorker.register(URL.createObjectURL(new Blob([swCode], { type: 'application/javascript' })));
+      updateSwBadge(true);
+      syncRemindersWithServiceWorker();
+    } catch (e) { updateSwBadge(false); }
+  } else { updateSwBadge(false); }
+}
+
+function updateSwBadge(active) {
+  const dot = document.getElementById('swDot');
+  const txt = document.getElementById('swStatusText');
+  if (!dot || !txt) return;
+  if (active && 'Notification' in window && Notification.permission === 'granted') {
+    dot.classList.remove('warn'); txt.textContent = 'پس‌زمینه فعال';
+  } else {
+    dot.classList.add('warn'); txt.textContent = 'آماده';
+  }
+}
+
+function toUnicodeStrike(text) {
+  return String(text || '').split('').join('\u0336') + '\u0336';
+}
+
+function buildProgressBarStr(done, total) {
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const filled = Math.round(pct / 10);
+  const empty = Math.max(0, 10 - filled);
+  return '█'.repeat(filled) + '░'.repeat(empty) + ` ${faNum(pct)}٪ (${faNum(done)}/${faNum(total)})`;
+}
+
+function buildThemedNotificationIcon(theme, accent, bgFx) {
+  const bgMap = {
+    dark: '#0d1930',
+    light: '#eef4fc',
+    oled: '#000000',
+    forest: '#092219',
+    sunset: '#291120',
+    royal: '#1b113b'
+  };
+  const bg = bgMap[theme] || '#0d1930';
+  const ringStyle = bgFx === 'cyber' ? 'stroke-dasharray="14 8"' : (bgFx === 'waves' ? 'stroke-dasharray="24 6"' : '');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+    <rect width="192" height="192" rx="44" fill="${bg}"/>
+    <rect x="10" y="10" width="172" height="172" rx="36" fill="none" stroke="${accent}" stroke-width="8" ${ringStyle}/>
+    <text x="96" y="122" font-size="92" text-anchor="middle" fill="${accent}" font-family="sans-serif" font-weight="bold">M</text>
+  </svg>`;
+  return 'data:image/svg+xml;base64,' + btoa(svg);
+}
+
+function syncPersistentDailyNotification() {
+  const enabled = state.settings.persistentNotification !== false;
+  const jToday = Jalali.today();
+  const todayStr = Jalali.format(jToday);
+  const dateHeader = Jalali.formatLong(jToday);
+
+  const fxIcons = {
+    neon: '💫',
+    aurora: '🌌',
+    cyber: '🌐',
+    particles: '✨',
+    waves: '🌊',
+    spotlight: '🔦'
+  };
+  const fxIco = fxIcons[state.settings.bgFx] || '📅';
+
+  const tasks = state.tasks[todayDayIdx] || [];
+  const workouts = (state.sport && state.sport.workouts && state.sport.workouts[todayDayIdx]) || [];
+  const todayRems = (state.reminders || []).filter(r => r.jDate === todayStr || r.repeat === 'daily');
+
+  const totalItems = tasks.length + workouts.length + todayRems.length;
+  const doneItems =
+    tasks.filter(t => t.done).length +
+    workouts.filter(w => w.done).length +
+    todayRems.filter(r => r.fired).length;
+
+  const progressLine = `📊 پیشرفت امروز: ${buildProgressBarStr(doneItems, totalItems)}`;
+
+  const lines = [progressLine];
+
+  if (todayRems.length) {
+    const remTxt = todayRems.map(r => r.fired ? toUnicodeStrike(`${r.title} (${r.time})`) : `${r.title} (${r.time})`).join(' ، ');
+    lines.push(`🔔 یادآورها: ${remTxt}`);
+  }
+
+  if (tasks.length) {
+    const tTxt = tasks.map(t => t.done ? toUnicodeStrike(t.name) : t.name).join(' ، ');
+    lines.push(`📚 برنامه درسی: ${tTxt}`);
+  }
+
+  if (workouts.length) {
+    const wTxt = workouts.map(w => w.done ? toUnicodeStrike(w.name) : w.name).join(' ، ');
+    lines.push(`🏋️ برنامه ورزشی: ${wTxt}`);
+  }
+
+  if (!todayRems.length && !tasks.length && !workouts.length) {
+    lines.push('✨ امروز موردی ثبت نشده است.');
+  }
+
+  const payload = {
+    enabled,
+    title: `${fxIco} ${dateHeader} | MyWeek`,
+    body: lines.join('\n'),
+    icon: buildThemedNotificationIcon(state.settings.theme, state.settings.accent, state.settings.bgFx)
+  };
+
+  if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({ type: 'SYNC_PERSISTENT_NOTIF', payload });
+  } else if (swRegistration && swRegistration.active) {
+    swRegistration.active.postMessage({ type: 'SYNC_PERSISTENT_NOTIF', payload });
+  } else if ('Notification' in window && Notification.permission === 'granted') {
+    if (enabled) {
+      new Notification(payload.title, {
+        body: payload.body,
+        icon: payload.icon,
+        tag: 'myweek-persistent-daily',
+        silent: true
+      });
+    }
+  }
+}
+
+function syncRemindersWithServiceWorker() {
+  if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({ type: 'SYNC_REMINDERS', reminders: state.reminders });
+  }
+  syncPersistentDailyNotification();
+}
+
+/* ==========================================================================
+   4. AUDIO & VIBRATION ALARM ENGINE
+   ========================================================================== */
+function playAlarmSoundAndVibrate() {
+  if (state.settings.vibrate && 'vibrate' in navigator) {
+    navigator.vibrate([400, 200, 400, 200, 600]);
+  }
+  if (!state.settings.sound) return;
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AudioCtx();
+    const tone = state.settings.tone || 'chime';
+    const toneConfigs = {
+      chime:   { notes: [523.25, 659.25, 783.99, 1046.5], type: 'sine', step: 0.22, dur: 0.21 },
+      urgent:  { notes: [880, 987, 880, 987, 1046],       type: 'sawtooth', step: 0.18, dur: 0.17 },
+      digital: { notes: [1200, 1200, 1500, 1200, 1500],   type: 'square', step: 0.16, dur: 0.14 },
+      crystal: { notes: [1046.5, 1318.5, 1567.98, 2093],  type: 'triangle', step: 0.26, dur: 0.25 },
+      radar:   { notes: [1400, 0, 1400, 0, 1400, 1760],   type: 'sine', step: 0.14, dur: 0.12 },
+      levelup: { notes: [440, 554.37, 659.25, 880, 1108.73, 1318.5], type: 'triangle', step: 0.14, dur: 0.15 },
+      siren:   { notes: [620, 920, 620, 920, 620, 980],   type: 'sawtooth', step: 0.20, dur: 0.19 }
+    };
+    const cfg = toneConfigs[tone] || toneConfigs.chime;
+    cfg.notes.forEach((freq, idx) => {
+      if (!freq) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = cfg.type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * cfg.step);
+      gain.gain.setValueAtTime(0.24, ctx.currentTime + idx * cfg.step);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * cfg.step + cfg.dur);
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + idx * cfg.step);
+      osc.stop(ctx.currentTime + idx * cfg.step + cfg.dur + 0.01);
+    });
+  } catch (e) {}
+}
+
+let activeRingingReminder = null;
+function triggerAlarmUI(title, body, remObj = null) {
+  activeRingingReminder = remObj;
+  document.getElementById('alarmTitle').textContent = title;
+  document.getElementById('alarmBody').textContent = body;
+  document.getElementById('alarmModal').classList.add('open');
+  playAlarmSoundAndVibrate();
+  if ('Notification' in window && Notification.permission === 'granted') {
+    if (swRegistration && swRegistration.showNotification) swRegistration.showNotification(title, { body, vibrate: [300, 150, 300], requireInteraction: true });
+    else new Notification(title, { body });
+  }
+}
+
+document.getElementById('alarmDismiss').addEventListener('click', () => {
+  document.getElementById('alarmModal').classList.remove('open');
+  activeRingingReminder = null;
+});
+document.getElementById('alarmSnooze').addEventListener('click', () => {
+  document.getElementById('alarmModal').classList.remove('open');
+  if (activeRingingReminder) {
+    activeRingingReminder.triggerAt = Date.now() + 5 * 60 * 1000;
+    activeRingingReminder.fired = false;
+    saveState(); renderReminders();
+    showToast('⏰ یادآور برای ۵ دقیقه دیگر تنظیم شد');
+  }
+  activeRingingReminder = null;
+});
+
+setInterval(() => {
+  const now = Date.now();
+  let changed = false;
+  state.reminders.forEach(r => {
+    if (!r.fired && r.triggerAt <= now) {
+      triggerAlarmUI('🔔 یادآور MyWeek', `${r.title} — ساعت ${r.time}`, r);
+      if (r.repeat === 'daily') r.triggerAt += 24 * 3600 * 1000;
+      else if (r.repeat === 'weekly') r.triggerAt += 7 * 24 * 3600 * 1000;
+      else r.fired = true;
+      changed = true;
+    }
+  });
+  if (changed) { saveState(); renderReminders(); renderHome(); }
+}, 5000);
+
+/* ==========================================================================
+   5. NAVIGATION & SUB-TAB CONTROLLERS
+   ========================================================================== */
+const tabAnimIcons = {
+  home: '🏠',
+  plan: '📚',
+  sport: '🏋️',
+  reminders: '🔔',
+  time: '⏱️',
+  stats: '📊',
+  settings: '🎨'
+};
+window.switchTab = function(tabName) {
+  document.querySelectorAll('.tab-view').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById('tab-' + tabName);
+  const navBtn = document.querySelector(`.nav-item[data-tab="${tabName}"]`);
+  const topSetBtn = document.querySelector('.top-settings-btn');
+  if (target) target.classList.add('active');
+  if (navBtn) navBtn.classList.add('active');
+  if (topSetBtn) topSetBtn.classList.toggle('active-set', tabName === 'settings');
+  const animIco = document.getElementById('tabAnimIco');
+  if (animIco) animIco.textContent = tabAnimIcons[tabName] || '✨';
+  if (tabName === 'home') renderHome();
+  if (tabName === 'stats') renderStats();
+  if (tabName === 'reminders') renderCalendar();
+  if (tabName === 'sport') renderSportAll();
+};
+
+document.querySelectorAll('.nav-item').forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
+
+document.querySelectorAll('#planSubTabs .seg-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#planSubTabs .seg-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ['tasks', 'exams', 'ai', 'goals', 'habits', 'notes'].forEach(s => {
+      const el = document.getElementById('sub-' + s);
+      if (el) el.hidden = (s !== btn.dataset.sub);
+    });
+    if (btn.dataset.sub === 'ai') renderAIExamAudit();
+  });
+});
+
+document.querySelectorAll('#sportSubTabs .seg-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#sportSubTabs .seg-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ['workouts', 'body', 'spnotes'].forEach(s => {
+      document.getElementById('spsub-' + s).hidden = (s !== btn.dataset.spsub);
+    });
+  });
+});
+
+document.querySelectorAll('#timeSubTabs .seg-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#timeSubTabs .seg-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ['pomo', 'countdown', 'stopwatch'].forEach(s => {
+      document.getElementById('tsub-' + s).hidden = (s !== btn.dataset.tsub);
+    });
+  });
+});
+
+/* ==========================================================================
+   6. SMART EXAM ANALYZER (SEPARATE TEST & DESCRIPTIVE HANDLERS) + AI ENGINE
+   ========================================================================== */
+const ExamDataHandlers = {
+  // داده‌گیرنده اختصاصی آزمون تستی (چهارگزینه‌ای)
+  test: {
+    onSelect() {
+      document.getElementById('exTestFields').hidden = false;
+      document.getElementById('exDescFields').hidden = true;
+    },
+    collect() {
+      const totalQ = Math.max(1, parseInt(document.getElementById('exTotalQ').value) || 1);
+      const durationMin = Math.max(1, parseInt(document.getElementById('exTestDuration').value) || 30);
+      const correct = Math.min(totalQ, Math.max(0, parseInt(document.getElementById('exCorrect').value) || 0));
+      const wrong = Math.min(totalQ - correct, Math.max(0, parseInt(document.getElementById('exWrong').value) || 0));
+      const blank = Math.max(0, totalQ - (correct + wrong));
+      const percentage = Math.round(((3 * correct - wrong) / (3 * totalQ)) * 1000) / 10;
+      const answered = correct + wrong;
+      const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+      const secPerQ = Math.round((durationMin * 60) / totalQ);
+      return {
+        totalQ, durationMin, correct, wrong, blank,
+        percentage, accuracy, secPerQ,
+        score: 0, maxScore: 20, descWeakness: 'none'
+      };
+    },
+    buildSuggestions(ex, baseMeta) {
+      const sugs = [];
+      const wrongRate = ex.wrong / ex.totalQ;
+      const blankRate = ex.blank / ex.totalQ;
+      if (wrongRate >= 0.25) {
+        sugs.push({
+          id: uid(), examId: ex.id, subject: ex.subject, priority: 'high',
+          title: `تحلیل دام‌های تستی و رفع اشکال «${ex.topic}» (${ex.subject})`,
+          reason: `دقت تستی شما ${faNum(ex.accuracy)}٪ بوده و ${faNum(ex.wrong)} غلط نمره منفی ایجاد کرده است.`,
+          status: 'pending'
+        });
+      }
+      if (blankRate >= 0.30 || ex.secPerQ > 120) {
+        sugs.push({
+          id: uid(), examId: ex.id, subject: ex.subject, priority: 'high',
+          title: `تست زمان‌دار سرعتی (۱۵ تست) از «${ex.topic}» (${ex.subject})`,
+          reason: `${faNum(ex.blank)} سوال نزده و میانگین ${faNum(ex.secPerQ)} ثانیه برای هر تست ثبت شده است.`,
+          status: 'pending'
+        });
+      }
+      return sugs;
+    },
+    formatHistoryDetail(ex) {
+      const accTxt = ex.accuracy !== undefined ? ` | دقت: ${faNum(ex.accuracy)}٪` : '';
+      return `🔵 تستی · کل: ${faNum(ex.totalQ)} | درست: ${faNum(ex.correct)} | غلط: ${faNum(ex.wrong)} | نزده: ${faNum(ex.blank)}${accTxt}`;
+    }
+  },
+
+  // داده‌گیرنده اختصاصی آزمون تشریحی (نمره‌ای)
+  desc: {
+    onSelect() {
+      document.getElementById('exTestFields').hidden = true;
+      document.getElementById('exDescFields').hidden = false;
+    },
+    collect() {
+      const maxScore = Math.max(1, parseFloat(document.getElementById('exMaxScore').value) || 20);
+      const score = Math.min(maxScore, Math.max(0, parseFloat(document.getElementById('exScore').value) || 0));
+      const descWeakness = document.getElementById('exDescWeakness').value || 'none';
+      const percentage = Math.round((score / maxScore) * 1000) / 10;
+      const grade20 = Math.round((score / maxScore) * 2000) / 100;
+      return {
+        score, maxScore, grade20, descWeakness, percentage,
+        totalQ: 0, correct: 0, wrong: 0, blank: 0
+      };
+    },
+    buildSuggestions(ex, baseMeta) {
+      const sugs = [];
+      const weaknessMap = {
+        concept: {
+          title: `بازخوانی عمیق درسنامه و فرمول‌های «${ex.topic}» (${ex.subject})`,
+          reason: `علت افت نمره (${faNum(ex.score)} از ${faNum(ex.maxScore)}) عدم تسلط بر مفاهیم پایه ثبت شده است.`
+        },
+        steps: {
+          title: `تمرین تشریحی‌نویسی و بررسی بارم‌بندی «${ex.topic}» (${ex.subject})`,
+          reason: `برای جلوگیری از کسر نمره در مراحل حل، نمونه سوالات امتحانی را با کلید تشریحی بررسی کنید.`
+        },
+        time: {
+          title: `شبیه‌سازی امتحان تشریحی زمان‌دار از «${ex.topic}» (${ex.subject})`,
+          reason: `مدیریت زمان در جلسه امتحان تشریحی نیازمند تمرین حل مسئله در زمان محدود است.`
+        }
+      };
+      if (ex.descWeakness && weaknessMap[ex.descWeakness]) {
+        sugs.push({
+          id: uid(), examId: ex.id, subject: ex.subject, priority: 'high',
+          title: weaknessMap[ex.descWeakness].title,
+          reason: weaknessMap[ex.descWeakness].reason,
+          status: 'pending'
+        });
+      }
+      return sugs;
+    },
+    formatHistoryDetail(ex) {
+      const wLabels = { concept: 'ضعف مفهومی', steps: 'کسر نمره مراحل حل', time: 'کمبود وقت', none: 'مطلوب' };
+      const wTxt = ex.descWeakness && ex.descWeakness !== 'none' ? ` | علت افت: ${wLabels[ex.descWeakness] || ''}` : '';
+      return `🟢 تشریحی · نمره: ${faNum(ex.score)} از ${faNum(ex.maxScore)}${wTxt}`;
+    }
+  }
+};
+
+const customPickerConfigs = {
+  exType: {
+    title: 'انتخاب نوع آزمون',
+    options: [
+      { value: 'test', label: '🔵 تستی (چهارگزینه‌ای)', desc: 'محاسبه درصد با نمره منفی، دقت و سرعت تست‌زنی' },
+      { value: 'desc', label: '🟢 تشریحی (نمره‌ای)', desc: 'محاسبه تراز نمره و تحلیل علت کسر بارم' }
+    ],
+    onChange(val) {
+      const handler = ExamDataHandlers[val] || ExamDataHandlers.test;
+      handler.onSelect();
+    }
+  },
+  exDescWeakness: {
+    title: 'علت اصلی کسر نمره در تشریحی',
+    options: [
+      { value: 'none', label: '✨ تسلط کامل / بی‌دقتی جزئی', desc: 'نمره مطلوب یا اشتباهات محاسباتی کوچک' },
+      { value: 'concept', label: '📖 عدم تسلط بر مفاهیم و فرمول‌ها', desc: 'نیاز به بازخوانی درسنامه و نکات پایه' },
+      { value: 'steps', label: '✍️ ناقص نوشتن مراحل حل و بارم‌بندی', desc: 'نیاز به تمرین تشریحی‌نویس با کلید آزمون' },
+      { value: 'time', label: '⏳ کمبود وقت در جلسه امتحان', desc: 'نیاز به شبیه‌سازی آزمون زمان‌دار' }
+    ],
+    onChange() {}
+  },
+  setTone: {
+    title: 'انتخاب زنگ هشدار',
+    options: [
+      { value: 'chime', label: '🎵 زنگ ملایم و حرفه‌ای (Chime)', desc: 'آهنگ دلنشین و آرام برای یادآورهای روزانه' },
+      { value: 'urgent', label: '⏰ آلارم بیدارباش (Urgent)', desc: 'هشدار پرقدرت برای کارهای ضروری' },
+      { value: 'digital', label: '📟 بیپ دیجیتال (Digital)', desc: 'صدای کلاسیک کرنومتر و ساعت دیجیتال' },
+      { value: 'crystal', label: '💎 زنگ کریستالی آرامش‌بخش (Crystal)', desc: 'طنین شفاف و ملایم' },
+      { value: 'radar', label: '📡 هشدار راداری کلاسیک (Radar)', desc: 'پالس‌های منظم و دقیق' },
+      { value: 'levelup', label: '🏆 ملودی انگیزشی پیروزی (Level Up)', desc: 'آهنگ انرژی‌بخش پایان تمرین یا مطالعه' },
+      { value: 'siren', label: '🚨 آژیر هشدار فوری (Siren Pulse)', desc: 'حداکثر جلب توجه برای زمان‌های حساس' }
+    ],
+    onChange(val) {
+      state.settings.tone = val;
+      saveState();
+      playAlarmSoundAndVibrate();
+    }
+  },
+  tPriority: {
+    title: 'اولویت فعالیت',
+    options: [
+      { value: 'high', label: '🔥 ضروری (فوری)', desc: 'انجام در بالاترین اولویت روز' },
+      { value: 'medium', label: '⚡ مهم', desc: 'برنامه اصلی و کلیدی روزانه' },
+      { value: 'low', label: '📌 معمولی', desc: 'انجام در زمان‌های آزاد' }
+    ],
+    onChange() {}
+  },
+  gScope: {
+    title: 'بازه زمانی هدف',
+    options: [
+      { value: 'daily', label: '📅 روزانه', desc: 'هدف‌گذاری کوتاه‌مدت امروز' },
+      { value: 'weekly', label: '🗓 هفتگی', desc: 'برنامه‌ریزی برای طول هفته' },
+      { value: 'monthly', label: '🗂 ماهانه', desc: 'چشم‌انداز کلان ماه جاری' }
+    ],
+    onChange() {}
+  },
+  hTarget: {
+    title: 'هدف هفتگی عادت',
+    options: [
+      { value: '7', label: '🔄 هر روز (۷ روز)', desc: 'تداوم روزانه بدون وقفه' },
+      { value: '5', label: '🗓 ۵ روز در هفته', desc: 'مناسب روزهای درسی و کاری' },
+      { value: '3', label: '📌 ۳ روز در هفته', desc: 'عادت‌های یک روز در میان' }
+    ],
+    onChange() {}
+  },
+  spCategory: {
+    title: 'دسته‌بندی ورزش',
+    options: [
+      { value: 'بدنسازی / قدرتی', label: '🏋️ بدنسازی / قدرتی', desc: 'تمرینات با وزنه، دستگاه و قدرتی' },
+      { value: 'هوازی / دویدن', label: '🏃 هوازی / دویدن', desc: 'دویدن، طناب‌زنی و استقامت قلبی' },
+      { value: 'کششی / اصلاحی', label: '🧘 کششی / اصلاحی', desc: 'انعطاف، یوگا و حرکات اصلاحی' },
+      { value: 'ورزش توپی / رزمی', label: '⚽ ورزش توپی / رزمی', desc: 'فوتبال، والیبال، بوکس و رزمی' }
+    ],
+    onChange() {}
+  },
+  rRepeat: {
+    title: 'تکرار یادآور',
+    options: [
+      { value: 'once', label: '🔁 یک‌بار', desc: 'فقط در تاریخ و ساعت مشخص‌شده' },
+      { value: 'daily', label: '📅 هر روز', desc: 'تکرار خودکار در همین ساعت هر روز' },
+      { value: 'weekly', label: '🗓 هر هفته', desc: 'تکرار هفتگی در همین روز' }
+    ],
+    onChange() {}
+  }
+};
+
+/* Custom Modern Time Picker Sheet */
+let activeTimeField = null;
+let activeTimeRequired = false;
+let tempHour = '08';
+let tempMinute = '00';
+
+window.syncTimePickerLabel = function(fieldId) {
+  const input = document.getElementById(fieldId);
+  const lbl = document.getElementById(fieldId + 'PickerLabel');
+  if (!input || !lbl) return;
+  if (!input.value) {
+    lbl.textContent = '🕒 بدون ساعت';
+  } else {
+    const [h, m] = input.value.split(':');
+    lbl.textContent = `⏰ ${faNum(parseInt(h,10)).padStart(2,'۰')}:${faNum(parseInt(m,10)).padStart(2,'۰')}`;
+  }
+};
+
+window.openCustomTimePicker = function(fieldId, required = false) {
+  activeTimeField = fieldId;
+  activeTimeRequired = required;
+  const input = document.getElementById(fieldId);
+  const cur = input && input.value ? input.value : '08:00';
+  const parts = cur.split(':');
+  tempHour = parts[0] || '08';
+  tempMinute = parts[1] || '00';
+  document.getElementById('pickerSheetTitle').textContent = 'انتخاب دقیق ساعت و دقیقه';
+  renderTimePickerSheet();
+  document.getElementById('pickerSheetBackdrop').classList.add('open');
+};
+
+function renderTimePickerSheet() {
+  const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, '0'));
+  const mins = Array.from({ length: 12 }, (_, i) => String(i * 5).padStart(2, '0'));
+  if (!mins.includes(tempMinute)) mins.push(tempMinute);
+  mins.sort();
+
+  document.getElementById('pickerSheetOptions').innerHTML = `
+    <div style="text-align:center;font-size:24px;font-weight:900;color:var(--accent);margin-bottom:10px;direction:ltr">
+      ${tempHour}:${tempMinute}
+    </div>
+    <div class="time-wheel-grid">
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:4px">ساعت</div>
+        <div class="time-col-box">
+          ${hours.map(h => `<button type="button" class="time-chip-opt ${h === tempHour ? 'active' : ''}" onclick="setTempTimePart('h','${h}')">${faNum(parseInt(h,10))} (${h})</button>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:4px">دقیقه</div>
+        <div class="time-col-box">
+          ${mins.map(m => `<button type="button" class="time-chip-opt ${m === tempMinute ? 'active' : ''}" onclick="setTempTimePart('m','${m}')">${faNum(parseInt(m,10))} (${m})</button>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button type="button" class="btn-primary" style="flex:1" onclick="confirmCustomTimePicker()">✓ تایید ساعت</button>
+      ${!activeTimeRequired ? `<button type="button" class="btn-ghost" onclick="clearCustomTimePicker()">حذف ساعت</button>` : ''}
+    </div>
+  `;
+}
+
+window.setTempTimePart = function(part, val) {
+  if (part === 'h') tempHour = val;
+  else tempMinute = val;
+  renderTimePickerSheet();
+};
+
+window.confirmCustomTimePicker = function() {
+  if (!activeTimeField) return;
+  const input = document.getElementById(activeTimeField);
+  if (input) input.value = `${tempHour}:${tempMinute}`;
+  syncTimePickerLabel(activeTimeField);
+  closeCustomPicker();
+};
+
+window.clearCustomTimePicker = function() {
+  if (!activeTimeField) return;
+  const input = document.getElementById(activeTimeField);
+  if (input) input.value = '';
+  syncTimePickerLabel(activeTimeField);
+  closeCustomPicker();
+};
+
+window.syncCustomPickerLabel = function(fieldId) {
+  const cfg = customPickerConfigs[fieldId];
+  const input = document.getElementById(fieldId);
+  const lbl = document.getElementById(fieldId + 'PickerLabel');
+  if (!cfg || !input || !lbl) return;
+  const found = cfg.options.find(o => o.value === input.value) || cfg.options[0];
+  lbl.textContent = found.label;
+};
+
+window.openCustomPicker = function(fieldId) {
+  const cfg = customPickerConfigs[fieldId];
+  const input = document.getElementById(fieldId);
+  if (!cfg || !input) return;
+  document.getElementById('pickerSheetTitle').textContent = cfg.title;
+  document.getElementById('pickerSheetOptions').innerHTML = cfg.options.map(opt => `
+    <button type="button" class="picker-opt ${input.value === opt.value ? 'selected' : ''}" onclick="selectCustomPickerOption('${fieldId}', '${opt.value}')">
+      <div>
+        <div>${opt.label}</div>
+        <div style="font-size:11px;color:var(--muted);font-weight:normal;margin-top:3px">${opt.desc}</div>
+      </div>
+      <span style="color:var(--accent);font-size:16px">${input.value === opt.value ? '✓' : ''}</span>
+    </button>
+  `).join('');
+  document.getElementById('pickerSheetBackdrop').classList.add('open');
+};
+
+window.closeCustomPicker = function() {
+  document.getElementById('pickerSheetBackdrop').classList.remove('open');
+};
+
+window.selectCustomPickerOption = function(fieldId, val) {
+  const cfg = customPickerConfigs[fieldId];
+  const input = document.getElementById(fieldId);
+  if (!cfg || !input) return;
+  input.value = val;
+  syncCustomPickerLabel(fieldId);
+  closeCustomPicker();
+  cfg.onChange(val);
+};
+
+document.getElementById('examForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const subject = document.getElementById('exSubject').value.trim();
+  const type = document.getElementById('exType').value;
+  const topic = document.getElementById('exTopic').value.trim();
+  const rank = Math.max(1, parseInt(document.getElementById('exRank').value) || 1);
+  const participants = Math.max(rank, parseInt(document.getElementById('exParticipants').value) || 1);
+
+  // اجرای داده‌گیرنده متناسب با نوع آزمون (تستی یا تشریحی)
+  const handler = ExamDataHandlers[type] || ExamDataHandlers.test;
+  const collectedData = handler.collect();
+
+  const percentile = Math.round((1 - (rank - 1) / participants) * 100);
+  const dateStr = Jalali.format(Jalali.today());
+
+  const examRecord = {
+    id: uid(), subject, type, topic,
+    ...collectedData,
+    rank, participants, percentile,
+    date: dateStr
+  };
+  state.exams.unshift(examRecord);
+
+  const newSuggestions = generateSmartStudySuggestions(examRecord);
+  state.examSuggestions.unshift(...newSuggestions);
+
+  saveState();
+  document.getElementById('exTopic').value = '';
+  renderExamsAll(); renderAIExamAudit();
+  renderAIExamAudit();
+  renderHome();
+  showToast(type === 'test' ? '🔵 آزمون تستی با داده‌گیرنده تستی تحلیل شد!' : '🟢 آزمون تشریحی با داده‌گیرنده تشریحی تحلیل شد!');
+});
+
+function generateSmartStudySuggestions(ex) {
+  const baseMeta = `درس ${ex.subject} · مبحث: ${ex.topic}`;
+  const handler = ExamDataHandlers[ex.type] || ExamDataHandlers.test;
+  const sugs = handler.buildSuggestions(ex, baseMeta);
+
+  if (ex.percentage < 50) {
+    sugs.push({
+      id: uid(), examId: ex.id, subject: ex.subject, priority: 'high',
+      title: `مرور پایه و حل تمرین جبرانی «${ex.topic}» (${ex.subject})`,
+      reason: `درصد/نمره کسب‌شده (${faNum(ex.percentage)}٪) زیر مرز تسلط است. نیاز به بازخوانی جدی مبحث دارید.`,
+      status: 'pending'
+    });
+  } else if (ex.percentage >= 50 && ex.percentage < 75) {
+    sugs.push({
+      id: uid(), examId: ex.id, subject: ex.subject, priority: 'medium',
+      title: `تمرین تثبیتی و مرور نکات «${ex.topic}» (${ex.subject})`,
+      reason: `پایه خوبی در ${baseMeta} دارید؛ با تمرین هدفمند به تسلط کامل می‌رسید.`,
+      status: 'pending'
+    });
+  } else if (sugs.length === 0) {
+    sugs.push({
+      id: uid(), examId: ex.id, subject: ex.subject, priority: 'low',
+      title: `مرور سریع خلاصه‌ها و سوالات سطح پیشرفته «${ex.topic}» (${ex.subject})`,
+      reason: `عملکرد عالی (${faNum(ex.percentage)}٪ و رتبه ${faNum(ex.rank)} از ${faNum(ex.participants)})! برای حفظ آمادگی مرور سبک پیشنهاد می‌شود.`,
+      status: 'pending'
+    });
+  }
+
+  return sugs;
+}
+
+window.respondToSuggestion = function(sugId, accept) {
+  const sug = state.examSuggestions.find(s => s.id === sugId);
+  if (!sug) return;
+  if (accept) {
+    sug.status = 'accepted';
+    state.tasks[todayDayIdx].unshift({
+      id: uid(),
+      name: sug.title,
+      time: '',
+      priority: sug.priority || 'high',
+      done: false
+    });
+    showToast('✅ به برنامه روزانه امروز اضافه شد!');
+  } else {
+    sug.status = 'rejected';
+    showToast('پیشنهاد رد شد');
+  }
+  saveState();
+  renderExamsAll();
+  renderWeeklyPlanner();
+  renderHome();
+};
+
+function renderExamsAll() {
+  const pendingSugs = state.examSuggestions.filter(s => s.status === 'pending');
+  const sugBox = document.getElementById('examSugBox');
+  sugBox.hidden = pendingSugs.length === 0;
+  document.getElementById('examSugCountBadge').textContent = faNum(pendingSugs.length) + ' پیشنهاد';
+
+  document.getElementById('examSuggestionsContainer').innerHTML = pendingSugs.map(s => `
+    <div class="ai-suggestion-card">
+      <span class="tag-smart">پیشنهاد هوشمند برنامه روزانه</span>
+      <div style="font-weight:800;font-size:13.5px;margin-bottom:4px">${esc(s.title)}</div>
+      <div style="font-size:11.5px;color:var(--muted);line-height:1.6;margin-bottom:10px">${esc(s.reason)}</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn-success" style="flex:1" onclick="respondToSuggestion('${s.id}', true)">✓ تایید و افزودن به برنامه امروز</button>
+        <button class="btn-danger" onclick="respondToSuggestion('${s.id}', false)">✕ رد کردن</button>
+      </div>
+    </div>
+  `).join('');
+
+  const bySubject = {};
+  [...state.exams].reverse().forEach(ex => {
+    const key = ex.subject.trim();
+    if (!bySubject[key]) bySubject[key] = [];
+    bySubject[key].push(ex);
+  });
+
+  const progEl = document.getElementById('subjectProgressList');
+  const subNames = Object.keys(bySubject);
+  if (!subNames.length) {
+    progEl.innerHTML = '<div class="empty-state">پس از ثبت اولین آزمون، نمودار پیشرفت هر درس اینجا نمایش داده می‌شود.</div>';
+  } else {
+    progEl.innerHTML = subNames.map(sub => {
+      const list = bySubject[sub];
+      const latest = list[list.length - 1];
+      const prev = list.length > 1 ? list[list.length - 2] : null;
+      const avg = Math.round((list.reduce((a, b) => a + b.percentage, 0) / list.length) * 10) / 10;
+      const diff = prev ? Math.round((latest.percentage - prev.percentage) * 10) / 10 : 0;
+      const trendHtml = prev
+        ? (diff >= 0 ? `<span style="color:var(--green)">▲ +${faNum(diff)}٪ رشد</span>` : `<span style="color:var(--red)">▼ ${faNum(diff)}٪ افت</span>`)
+        : `<span style="color:var(--muted)">اولین آزمون</span>`;
+      const barPct = Math.max(0, Math.min(100, latest.percentage));
+
+      return `
+        <div style="padding:10px 0;border-bottom:1px solid var(--line)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+            <strong style="font-size:14px">📘 ${esc(sub)} <small style="color:var(--muted);font-weight:normal">(${faNum(list.length)} آزمون)</small></strong>
+            <span style="font-size:12px">${trendHtml}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:5px">
+            <span>آخرین درصد/نمره: <b style="color:var(--accent)">${faNum(latest.percentage)}٪</b></span>
+            <span>میانگین کل درس: <b>${faNum(avg)}٪</b></span>
+            <span>آخرین رتبه: <b>${faNum(latest.rank)} از ${faNum(latest.participants)}</b></span>
+          </div>
+          <div class="progress-track" style="margin-top:0">
+            <div class="progress-fill" style="width:${barPct}%"></div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  document.getElementById('examHistoryCount').textContent = faNum(state.exams.length) + ' آزمون';
+  const histEl = document.getElementById('examHistoryList');
+  if (!state.exams.length) {
+    histEl.innerHTML = '<div class="empty-state">هنوز آزمونی ثبت نشده است.</div>';
+  } else {
+    histEl.innerHTML = state.exams.map(ex => {
+      const handler = ExamDataHandlers[ex.type] || ExamDataHandlers.test;
+      const detail = handler.formatHistoryDetail(ex);
+      return `
+        <div class="item-row">
+          <div class="item-body">
+            <div class="item-title">${esc(ex.subject)} — ${esc(ex.topic)}</div>
+            <div class="item-meta">
+              <span class="badge ${ex.percentage >= 60 ? 'low' : ex.percentage >= 40 ? 'medium' : 'high'}">${faNum(ex.percentage)}٪</span>
+              <span>رتبه ${faNum(ex.rank)} از ${faNum(ex.participants)}</span>
+              <span>· ${ex.date}</span>
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-top:3px">${detail}</div>
+          </div>
+          <button class="btn-danger" onclick="deleteExam('${ex.id}')">حذف</button>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+window.deleteExam = function(id) {
+  state.exams = state.exams.filter(x => x.id !== id);
+  state.examSuggestions = state.examSuggestions.filter(s => s.examId !== id);
+  saveState(); renderExamsAll(); renderAIExamAudit(); renderHome();
+};
+
+/* ==========================================================================
+   6B. AI ASSISTANT MODULE (FILE READER/SUMMARIZER + DEEP EXAM AUDITOR)
+   ========================================================================== */
+let currentLoadedFileName = '';
+
+const savedGeminiKey = localStorage.getItem('myweek_gemini_key') || '';
+const apiKeyInputEl = document.getElementById('aiApiKeyInput');
+if (apiKeyInputEl) {
+  apiKeyInputEl.value = savedGeminiKey;
+  apiKeyInputEl.addEventListener('change', e => {
+    localStorage.setItem('myweek_gemini_key', e.target.value.trim());
+    showToast('🔑 کلید API ذخیره شد');
+  });
+}
+
+document.getElementById('aiFileInput')?.addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  currentLoadedFileName = file.name;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    let raw = String(ev.target.result || '');
+    if (file.name.endsWith('.html') || file.name.endsWith('.htm')) {
+      const doc = new DOMParser().parseFromString(raw, 'text/html');
+      raw = doc.body ? doc.body.innerText : raw;
+    }
+    document.getElementById('aiRawText').value = raw.trim();
+    showToast(`📄 فایل «${file.name}» خوانده شد (${faNum(raw.length)} کاراکتر)`);
+  };
+  reader.readAsText(file, 'UTF-8');
+});
+
+document.getElementById('aiClearTextBtn')?.addEventListener('click', () => {
+  document.getElementById('aiRawText').value = '';
+  document.getElementById('aiFileInput').value = '';
+  document.getElementById('aiSummaryBox').hidden = true;
+  currentLoadedFileName = '';
+});
+
+function localExtractiveSummarize(text, ratioMode) {
+  const clean = text.replace(/\r/g, '').trim();
+  const sentences = clean
+    .split(/(?<=[.!؟\n])\s+/)
+    .map(s => s.trim())
+    .filter(s => s.length >= 18);
+
+  if (sentences.length <= 2) {
+    return `📌 خلاصه متن:\n• ${clean}`;
+  }
+
+  const stopWords = new Set(['است','هست','بود','شد','می','را','به','از','در','با','که','این','آن','برای','تا','بر','هم','یا','اما','اگر','چون','یک','های','ها','شده','شود','دارد','دارند']);
+  const wordFreq = {};
+  clean.split(/[\s،؛.!؟()«»:"'\-]+/).forEach(w => {
+    const token = w.toLowerCase();
+    if (token.length > 2 && !stopWords.has(token)) {
+      wordFreq[token] = (wordFreq[token] || 0) + 1;
+    }
+  });
+
+  const topKeywords = Object.entries(wordFreq)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 6)
+    .map(([k]) => k);
+
+  const scored = sentences.map((s, idx) => {
+    let score = 0;
+    s.split(/[\s،؛.!؟()«»:"'\-]+/).forEach(w => {
+      if (wordFreq[w.toLowerCase()]) score += wordFreq[w.toLowerCase()];
+    });
+    if (s.includes(':') || s.includes('عبارت است از') || s.includes('تعریف')) score *= 1.35;
+    if (idx === 0) score *= 1.2;
+    return { s, idx, score: score / Math.sqrt(s.length) };
+  });
+
+  const targetCount = ratioMode === 'short' ? 3 : (ratioMode === 'detailed' ? Math.min(10, Math.ceil(sentences.length * 0.55)) : Math.min(6, Math.max(3, Math.ceil(sentences.length * 0.35))));
+  const selected = scored
+    .sort((a, b) => b.score - a.score)
+    .slice(0, targetCount)
+    .sort((a, b) => a.idx - b.idx);
+
+  let out = '';
+  if (topKeywords.length) {
+    out += `🔑 کلیدواژه‌های اصلی: ${topKeywords.join(' ، ')}\n\n`;
+  }
+  out += `📌 نکات کلیدی و خلاصه ساختاریافته:\n`;
+  out += selected.map(item => `• ${item.s}`).join('\n');
+  return out;
+}
+
+document.getElementById('aiSummarizeBtn')?.addEventListener('click', async () => {
+  const text = document.getElementById('aiRawText').value.trim();
+  if (!text) {
+    showToast('⚠️ لطفاً ابتدا فایلی انتخاب کنید یا متنی بنویسید');
+    return;
+  }
+  const ratio = document.getElementById('aiSummaryRatio').value;
+  const apiKey = (document.getElementById('aiApiKeyInput')?.value || '').trim();
+  const btn = document.getElementById('aiSummarizeBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ در حال پردازش هوشمند...';
+
+  let summaryText = '';
+  let engineUsed = 'موتور هوشمند آفلاین';
+
+  if (apiKey) {
+    try {
+      const prompt = `متن زیر را به زبان فارسی، دقیق، ساختاریافته و مناسب برای مرور درسی خلاصه کن (سطح خلاصه: ${ratio}). کلیدواژه‌ها و نکات کلیدی را با بولت‌پوینت بنویس:
+
+${text.slice(0, 14000)}`;
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(apiKey)}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+      });
+      const data = await res.json();
+      const candidate = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (candidate) {
+        summaryText = candidate.trim();
+        engineUsed = 'Gemini AI';
+      }
+    } catch (err) {
+      // Fallback to local engine seamlessly
+    }
+  }
+
+  if (!summaryText) {
+    summaryText = localExtractiveSummarize(text, ratio);
+  }
+
+  const wordCount = text.split(/\s+/).filter(Boolean).length;
+  document.getElementById('aiDocStats').textContent = `${faNum(wordCount)} کلمه · ${engineUsed}`;
+  document.getElementById('aiSummaryContent').textContent = summaryText;
+  document.getElementById('aiSummaryBox').hidden = false;
+
+  btn.disabled = false;
+  btn.textContent = '✨ خواندن و خلاصه‌سازی هوشمند';
+  showToast('✅ خلاصه هوشمند آماده شد!');
+});
+
+document.getElementById('aiSaveToNotesBtn')?.addEventListener('click', () => {
+  const summary = document.getElementById('aiSummaryContent').textContent.trim();
+  if (!summary) return;
+  const title = currentLoadedFileName
+    ? `خلاصه هوشمند: ${currentLoadedFileName}`
+    : `خلاصه هوشمند (${Jalali.format(Jalali.today())})`;
+  state.notes.unshift({
+    id: uid(),
+    title,
+    body: summary,
+    date: Jalali.format(Jalali.today())
+  });
+  saveState();
+  renderNotes();
+  showToast('📒 خلاصه در بخش یادداشت‌ها ذخیره شد!');
+});
+
+document.getElementById('aiCopySummaryBtn')?.addEventListener('click', () => {
+  const summary = document.getElementById('aiSummaryContent').textContent.trim();
+  if (!summary) return;
+  navigator.clipboard?.writeText(summary);
+  showToast('📋 در حافظه کپی شد');
+});
+
+function renderAIExamAudit() {
+  const container = document.getElementById('aiDeepExamAnalysisContainer');
+  if (!container) return;
+
+  if (!state.exams.length) {
+    container.innerHTML = '<div class="empty-state">هنوز آزمونی ثبت نشده است. با ثبت آزمون‌های تستی یا تشریحی در تب «تحلیل آزمون»، هوش مصنوعی الگوی یادگیری، نقاط قوت و ضعف شما را اینجا تحلیل می‌کند.</div>';
+    return;
+  }
+
+  const testExams = state.exams.filter(e => e.type === 'test');
+  const descExams = state.exams.filter(e => e.type === 'desc');
+
+  const avgAll = Math.round((state.exams.reduce((s, e) => s + e.percentage, 0) / state.exams.length) * 10) / 10;
+  const sortedByPct = [...state.exams].sort((a, b) => b.percentage - a.percentage);
+  const strongest = sortedByPct[0];
+  const weakest = sortedByPct[sortedByPct.length - 1];
+
+  let testInsightsHtml = '';
+  if (testExams.length) {
+    const avgTestPct = Math.round((testExams.reduce((s, e) => s + e.percentage, 0) / testExams.length) * 10) / 10;
+    const totalWrong = testExams.reduce((s, e) => s + (e.wrong || 0), 0);
+    const totalCorrect = testExams.reduce((s, e) => s + (e.correct || 0), 0);
+    const overallAcc = (totalCorrect + totalWrong) > 0 ? Math.round((totalCorrect / (totalCorrect + totalWrong)) * 100) : 0;
+    testInsightsHtml = `
+      <div class="ai-suggestion-card" style="margin-bottom:10px">
+        <span class="tag-smart">تحلیل داده‌گیرنده تستی (${faNum(testExams.length)} آزمون)</span>
+        <div style="font-size:12.5px;line-height:1.7">
+          • میانگین درصد تستی: <b style="color:var(--accent)">${faNum(avgTestPct)}٪</b> | دقت پاسخ‌گویی کل: <b>${faNum(overallAcc)}٪</b><br>
+          • ${overallAcc < 70 ? '⚠️ تعداد غلط‌ها باعث افت تراز شده است؛ در آزمون بعدی فقط به سوالات مطمئن پاسخ دهید.' : '✅ کنترل نمره منفی شما بسیار خوب است؛ روی افزایش سرعت تست‌زنی تمرکز کنید.'}
+        </div>
+      </div>`;
+  }
+
+  let descInsightsHtml = '';
+  if (descExams.length) {
+    const avgDescPct = Math.round((descExams.reduce((s, e) => s + e.percentage, 0) / descExams.length) * 10) / 10;
+    descInsightsHtml = `
+      <div class="ai-suggestion-card" style="margin-bottom:10px">
+        <span class="tag-smart" style="background:rgba(74,222,128,0.16);color:var(--green)">تحلیل داده‌گیرنده تشریحی (${faNum(descExams.length)} آزمون)</span>
+        <div style="font-size:12.5px;line-height:1.7">
+          • میانگین تسلط تشریحی: <b style="color:var(--green)">${faNum(avgDescPct)}٪</b><br>
+          • ${avgDescPct < 75 ? '📖 برای رسیدن به نمره کامل، نوشتن گام‌به‌گام فرمول‌ها و حل نمونه سوالات نهایی توصیه می‌شود.' : '🏆 تسلط تشریحی شما در سطح ممتازی قرار دارد.'}
+        </div>
+      </div>`;
+  }
+
+  container.innerHTML = `
+    <div style="background:var(--panel2);padding:12px;border-radius:14px;border:1px solid var(--line);margin-bottom:12px;font-size:12.5px;line-height:1.8">
+      <div>📊 <b>شاخص کل عملکرد:</b> میانگین <b>${faNum(avgAll)}٪</b> در مجموع <b>${faNum(state.exams.length)}</b> آزمون</div>
+      <div>🌟 <b>نقطه قوت فعلی:</b> ${esc(strongest.subject)} (${esc(strongest.topic)}) با <b>${faNum(strongest.percentage)}٪</b></div>
+      <div>🎯 <b>اولویت اول مطالعه:</b> ${esc(weakest.subject)} (${esc(weakest.topic)}) با <b>${faNum(weakest.percentage)}٪</b></div>
+    </div>
+    ${testInsightsHtml}
+    ${descInsightsHtml}
+  `;
+}
+
+document.getElementById('aiRunExamAuditBtn')?.addEventListener('click', () => {
+  renderAIExamAudit();
+  showToast('🧠 تحلیل هوشمند آزمون‌ها بروزرسانی شد');
+});
+
+/* ==========================================================================
+   7. TAB 3: DEDICATED SPORT ASSISTANT (SEPARATE STORAGE & UI)
+   ========================================================================== */
+let selectedSportDay = todayDayIdx;
+
+function renderSportAll() {
+  // KPIs
+  let doneWeek = 0, totalMins = 0;
+  for (let d = 0; d < 7; d++) {
+    (state.sport.workouts[d] || []).forEach(w => {
+      if (w.done) { doneWeek++; totalMins += (parseInt(w.duration) || 0); }
+    });
+  }
+  document.getElementById('spDoneWeek').textContent = faNum(doneWeek);
+  document.getElementById('spTotalMins').textContent = faNum(totalMins);
+  const latestMetric = state.sport.metrics[0];
+  document.getElementById('spWeightLatest').textContent = latestMetric ? faNum(latestMetric.weight) : '--';
+
+  // Days strip
+  document.getElementById('sportDaysStrip').innerHTML = Jalali.weekDays.map((d, i) => `
+    <button class="day-btn ${i === selectedSportDay ? 'active' : ''} ${i === todayDayIdx ? 'today' : ''}" onclick="selectSportDay(${i})">
+      <strong>${Jalali.weekShort[i]}</strong>
+      <small>${d}</small>
+    </button>
+  `).join('');
+
+  document.getElementById('sportDayTitle').textContent = selectedSportDay === todayDayIdx ? 'تمرین‌های امروز' : 'تمرین‌های ' + Jalali.weekDays[selectedSportDay];
+  const wList = state.sport.workouts[selectedSportDay] || [];
+  document.getElementById('sportDayBadge').textContent = faNum(wList.length) + ' حرکت';
+
+  const wContainer = document.getElementById('sportWorkoutList');
+  if (!wList.length) {
+    wContainer.innerHTML = '<div class="empty-state">برای این روز تمرینی ثبت نشده است. استراحت یا ثبت حرکت جدید!</div>';
+  } else {
+    wContainer.innerHTML = wList.map(w => `
+      <div class="sport-card ${w.done ? 'done-card' : ''}" data-sp-id="${w.id}" style="${w.done ? 'opacity:0.75' : ''}">
+        <div style="display:flex;align-items:center;gap:10px">
+          <input type="checkbox" style="width:20px;height:20px;accent-color:var(--green)" ${w.done ? 'checked' : ''} onchange="toggleSportWorkout(${selectedSportDay}, '${w.id}')">
+          <div style="flex:1">
+            <div class="sport-title-text" style="font-weight:800;font-size:14px">${esc(w.name)}</div>
+            <div class="sport-pill-row">
+              <span class="sport-stat-chip">🏷 ${esc(w.category)}</span>
+              ${w.sets ? `<span class="sport-stat-chip">🔁 ${esc(w.sets)}</span>` : ''}
+              ${w.weight ? `<span class="sport-stat-chip">🏋️ ${esc(w.weight)}</span>` : ''}
+              <span class="sport-stat-chip">⏱ ${faNum(w.duration)} دقیقه</span>
+            </div>
+          </div>
+          <button class="btn-danger" onclick="deleteSportWorkout('${w.id}')">حذف</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Metrics List
+  const mEl = document.getElementById('sportMetricsList');
+  if (!state.sport.metrics.length) {
+    mEl.innerHTML = '<div class="empty-state">هنوز وزن یا رکوردی ثبت نشده است.</div>';
+  } else {
+    mEl.innerHTML = state.sport.metrics.map(m => `
+      <div class="item-row">
+        <div style="font-size:20px">⚖️</div>
+        <div class="item-body">
+          <div class="item-title">وزن: ${faNum(m.weight)} کیلوگرم</div>
+          <div class="item-meta">
+            <span>📅 ${m.date}</span>
+            ${m.note ? `<span>· 🏆 ${esc(m.note)}</span>` : ''}
+          </div>
+        </div>
+        <button class="btn-danger" onclick="deleteSportMetric('${m.id}')">حذف</button>
+      </div>
+    `).join('');
+  }
+
+  // Sport Notes
+  const snEl = document.getElementById('sportNotesList');
+  if (!state.sport.notes.length) {
+    snEl.innerHTML = '<div class="empty-state">یادداشت ورزشی ثبت نشده است.</div>';
+  } else {
+    snEl.innerHTML = state.sport.notes.map(n => `
+      <div class="note-item">
+        <div style="display:flex;justify-content:space-between">
+          <h4>💪 ${esc(n.title)}</h4>
+          <span style="font-size:10.5px;color:var(--muted)">${n.date}</span>
+        </div>
+        <p>${esc(n.body)}</p>
+        <div style="text-align:left"><button class="btn-danger" onclick="deleteSportNote('${n.id}')">حذف</button></div>
+      </div>
+    `).join('');
+  }
+}
+
+window.selectSportDay = function(idx) { selectedSportDay = idx; renderSportAll(); };
+document.getElementById('btnSportToday').addEventListener('click', () => selectSportDay(todayDayIdx));
+
+document.getElementById('sportForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('spName').value.trim();
+  if (!name) return;
+  state.sport.workouts[selectedSportDay].push({
+    id: uid(),
+    name,
+    category: document.getElementById('spCategory').value,
+    duration: parseInt(document.getElementById('spDuration').value) || 15,
+    sets: document.getElementById('spSets').value.trim(),
+    weight: document.getElementById('spWeight').value.trim(),
+    done: false
+  });
+  saveState();
+  document.getElementById('spName').value = '';
+  document.getElementById('spSets').value = '';
+  document.getElementById('spWeight').value = '';
+  renderSportAll();
+  renderHome();
+  showToast('💪 حرکت به برنامه ورزشی اضافه شد');
+});
+
+window.toggleSportWorkout = function(dayIdx, id) {
+  const w = (state.sport.workouts[dayIdx] || []).find(x => x.id === id);
+  if (w) {
+    w.done = !w.done;
+    saveState();
+    renderSportAll();
+    renderHome();
+    if (w.done) {
+      document.querySelectorAll(`[data-sp-id="${id}"]`).forEach(el => {
+        el.classList.add('just-checked');
+        setTimeout(() => el.classList.remove('just-checked'), 950);
+      });
+    }
+  }
+};
+window.deleteSportWorkout = function(id) {
+  state.sport.workouts[selectedSportDay] = state.sport.workouts[selectedSportDay].filter(x => x.id !== id);
+  saveState(); renderSportAll(); renderHome();
+};
+
+document.getElementById('sportMetricForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const weight = parseFloat(document.getElementById('smWeight').value);
+  const note = document.getElementById('smNote').value.trim();
+  if (!weight) return;
+  state.sport.metrics.unshift({ id: uid(), weight, note, date: Jalali.format(Jalali.today()) });
+  saveState(); e.target.reset(); renderSportAll();
+  showToast('📏 رکورد ورزشی ثبت شد');
+});
+window.deleteSportMetric = function(id) {
+  state.sport.metrics = state.sport.metrics.filter(x => x.id !== id);
+  saveState(); renderSportAll();
+};
+
+document.getElementById('sportNoteForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const title = document.getElementById('snTitle').value.trim();
+  const body = document.getElementById('snBody').value.trim();
+  if (!title || !body) return;
+  state.sport.notes.unshift({ id: uid(), title, body, date: Jalali.format(Jalali.today()) });
+  saveState(); e.target.reset(); renderSportAll();
+  showToast('🗒 یادداشت ورزشی ذخیره شد');
+});
+window.deleteSportNote = function(id) {
+  state.sport.notes = state.sport.notes.filter(x => x.id !== id);
+  saveState(); renderSportAll();
+};
+
+/* ==========================================================================
+   8. HOME, WEEKLY TASKS, GOALS, HABITS, NOTES
+   ========================================================================== */
+let selectedDay = todayDayIdx;
+let editingTaskId = null;
+let editingNoteId = null;
+
+function renderHome() {
+  const jToday = Jalali.today();
+  document.getElementById('headerJalaliDate').textContent = Jalali.formatLong(jToday);
+
+  const todayTasks = state.tasks[todayDayIdx] || [];
+  const done = todayTasks.filter(t => t.done).length;
+  const pct = todayTasks.length ? Math.round((done / todayTasks.length) * 100) : 0;
+
+  const todaySport = state.sport.workouts[todayDayIdx] || [];
+  const sportDone = todaySport.filter(w => w.done).length;
+
+  const examAvg = state.exams.length
+    ? Math.round(state.exams.reduce((a, b) => a + b.percentage, 0) / state.exams.length)
+    : 0;
+
+  document.getElementById('kpiDone').textContent = `${faNum(done)}/${faNum(todayTasks.length)}`;
+  document.getElementById('kpiSportToday').textContent = `${faNum(sportDone)}/${faNum(todaySport.length)}`;
+  document.getElementById('kpiExamAvg').textContent = faNum(examAvg) + '٪';
+  document.getElementById('heroProgress').style.width = pct + '%';
+
+  // Pending Exam Suggestions on Home
+  const pendingSugs = state.examSuggestions.filter(s => s.status === 'pending');
+  const sugCard = document.getElementById('homeSuggestionsCard');
+  sugCard.hidden = pendingSugs.length === 0;
+  document.getElementById('pendingSugCount').textContent = faNum(pendingSugs.length) + ' پیشنهاد';
+  document.getElementById('homeSuggestionsList').innerHTML = pendingSugs.slice(0, 2).map(s => `
+    <div class="ai-suggestion-card">
+      <span class="tag-smart">پیشنهاد تحلیل آزمون</span>
+      <div style="font-weight:800;font-size:13px;margin-bottom:4px">${esc(s.title)}</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:8px">${esc(s.reason)}</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn-success" style="flex:1" onclick="respondToSuggestion('${s.id}', true)">✓ افزودن به امروز</button>
+        <button class="btn-danger" onclick="respondToSuggestion('${s.id}', false)">✕ رد</button>
+      </div>
+    </div>
+  `).join('');
+
+  // Home Study Tasks
+  const homeTasksEl = document.getElementById('homeTodayTasks');
+  homeTasksEl.innerHTML = todayTasks.length ? todayTasks.slice(0, 5).map(t => `
+    <div class="item-row ${t.done ? 'done' : ''}" data-task-id="${t.id}">
+      <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTask(${todayDayIdx}, '${t.id}')">
+      <div class="item-body">
+        <div class="item-title">${esc(t.name)}</div>
+        <div class="item-meta">
+          <span class="badge ${t.priority}">${t.priority==='high'?'ضروری':t.priority==='medium'?'مهم':'معمولی'}</span>
+          ${t.time ? `<span>⏰ ${t.time}</span>` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('') : '<div class="empty-state">امروز کاری ثبت نشده است.</div>';
+
+  // Home Sport Workouts
+  const homeSportEl = document.getElementById('homeTodaySport');
+  homeSportEl.innerHTML = todaySport.length ? todaySport.map(w => `
+    <div class="item-row ${w.done ? 'done' : ''}" data-sp-id="${w.id}">
+      <input type="checkbox" ${w.done ? 'checked' : ''} onchange="toggleSportWorkout(${todayDayIdx}, '${w.id}')">
+      <div class="item-body">
+        <div class="item-title">${esc(w.name)}</div>
+        <div class="item-meta">
+          <span class="badge accent">${esc(w.category)}</span>
+          ${w.sets ? `<span>${esc(w.sets)}</span>` : ''}
+          <span>· ${faNum(w.duration)} دقیقه</span>
+        </div>
+      </div>
+    </div>
+  `).join('') : '<div class="empty-state">امروز برنامه ورزشی ندارید یا روز استراحت است.</div>';
+
+  // Home Habits
+  const todayStr = Jalali.format(jToday);
+  const habitsDoneToday = state.habits.filter(h => (h.completedDates || []).includes(todayStr)).length;
+  document.getElementById('homeHabitSummary').textContent = `${faNum(habitsDoneToday)} از ${faNum(state.habits.length)}`;
+  document.getElementById('homeHabitsList').innerHTML = state.habits.length ? state.habits.map(h => {
+    const isDone = (h.completedDates || []).includes(todayStr);
+    return `
+      <div class="habit-card" data-habit-id="${h.id}">
+        <div>
+          <div class="habit-title-text" style="font-weight:700;font-size:13.5px">${esc(h.name)}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:3px">🔥 زنجیره: ${faNum(calcHabitStreak(h))} روز</div>
+        </div>
+        <button class="habit-check ${isDone ? 'done' : ''}" onclick="if(!this.classList.contains('done')){const r=this.getBoundingClientRect();triggerCheckLightEffect(r.left+r.width/2,r.top+r.height/2);}toggleHabitToday('${h.id}')">${isDone ? '✓' : ''}</button>
+      </div>
+    `;
+  }).join('') : '<div class="empty-state">عادت روزانه‌ای ثبت نشده است.</div>';
+}
+
+function renderWeeklyPlanner() {
+  document.getElementById('daysStrip').innerHTML = Jalali.weekDays.map((d, i) => `
+    <button class="day-btn ${i === selectedDay ? 'active' : ''} ${i === todayDayIdx ? 'today' : ''}" onclick="selectDay(${i})">
+      <strong>${Jalali.weekShort[i]}</strong><small>${d}</small>
+    </button>
+  `).join('');
+
+  document.getElementById('selectedDayTitle').textContent = selectedDay === todayDayIdx ? 'کارهای امروز' : 'کارهای ' + Jalali.weekDays[selectedDay];
+  const list = state.tasks[selectedDay] || [];
+  document.getElementById('dayTaskBadge').textContent = faNum(list.length) + ' کار';
+
+  const container = document.getElementById('weeklyTaskList');
+  const pLabels = { high: 'ضروری', medium: 'مهم', low: 'معمولی' };
+  container.innerHTML = list.length ? list.map(t => `
+    <div class="item-row ${t.done ? 'done' : ''}" data-task-id="${t.id}">
+      <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTask(${selectedDay}, '${t.id}')">
+      <div class="item-body">
+        <div class="item-title">${esc(t.name)}</div>
+        <div class="item-meta">
+          <span class="badge ${t.priority}">${pLabels[t.priority]}</span>
+          ${t.time ? `<span>ساعت ${t.time}</span>` : ''}
+        </div>
+      </div>
+      <button class="mini-btn" onclick="editTask('${t.id}')">ویرایش</button>
+      <button class="btn-danger" onclick="deleteTask('${t.id}')">حذف</button>
+    </div>
+  `).join('') : '<div class="empty-state">برای این روز برنامه‌ای ثبت نشده است.</div>';
+}
+
+window.selectDay = function(idx) { selectedDay = idx; cancelTaskEdit(); renderWeeklyPlanner(); };
+document.getElementById('btnGoToday').addEventListener('click', () => selectDay(todayDayIdx));
+
+window.toggleTask = function(dayIdx, id) {
+  const t = (state.tasks[dayIdx] || []).find(x => x.id === id);
+  if (t) {
+    t.done = !t.done;
+    saveState();
+    renderWeeklyPlanner();
+    renderHome();
+    if (t.done) {
+      document.querySelectorAll(`[data-task-id="${id}"]`).forEach(el => {
+        el.classList.add('just-checked');
+        setTimeout(() => el.classList.remove('just-checked'), 950);
+      });
+    }
+  }
+};
+window.deleteTask = function(id) {
+  state.tasks[selectedDay] = (state.tasks[selectedDay] || []).filter(x => x.id !== id);
+  saveState(); renderWeeklyPlanner(); renderHome();
+};
+window.editTask = function(id) {
+  const t = (state.tasks[selectedDay] || []).find(x => x.id === id);
+  if (!t) return;
+  editingTaskId = id;
+  document.getElementById('tName').value = t.name;
+  document.getElementById('tTime').value = t.time || '';
+  document.getElementById('tPriority').value = t.priority || 'medium';
+  syncTimePickerLabel('tTime');
+  syncCustomPickerLabel('tPriority');
+  document.getElementById('taskFormHeading').textContent = '✏️ ویرایش فعالیت';
+  document.getElementById('tSaveBtn').textContent = 'ذخیره تغییرات';
+  document.getElementById('tCancelEdit').hidden = false;
+};
+function cancelTaskEdit() {
+  editingTaskId = null; document.getElementById('taskForm').reset();
+  document.getElementById('tTime').value = '';
+  document.getElementById('tPriority').value = 'medium';
+  syncTimePickerLabel('tTime');
+  syncCustomPickerLabel('tPriority');
+  document.getElementById('taskFormHeading').textContent = '➕ افزودن فعالیت درسی / روزانه';
+  document.getElementById('tSaveBtn').textContent = 'ثبت در برنامه';
+  document.getElementById('tCancelEdit').hidden = true;
+}
+document.getElementById('tCancelEdit').addEventListener('click', cancelTaskEdit);
+
+document.getElementById('taskForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('tName').value.trim();
+  if (!name) return;
+  const time = document.getElementById('tTime').value;
+  const priority = document.getElementById('tPriority').value;
+  if (editingTaskId) {
+    const t = state.tasks[selectedDay].find(x => x.id === editingTaskId);
+    if (t) Object.assign(t, { name, time, priority });
+    showToast('✅ کار ویرایش شد');
+  } else {
+    state.tasks[selectedDay].push({ id: uid(), name, time, priority, done: false });
+    showToast('✅ به برنامه اضافه شد');
+  }
+  saveState(); cancelTaskEdit(); renderWeeklyPlanner(); renderHome();
+});
+
+// Goals
+function renderGoals() {
+  document.getElementById('goalsCountBadge').textContent = faNum(state.goals.length) + ' هدف';
+  const scopeNames = { daily: 'روزانه', weekly: 'هفتگی', monthly: 'ماهانه' };
+  document.getElementById('goalsList').innerHTML = state.goals.length ? state.goals.map(g => `
+    <div style="padding:12px 0;border-bottom:1px solid var(--line)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <strong style="font-size:14px">${esc(g.title)}</strong>
+        <span class="badge medium">${scopeNames[g.scope]}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <input type="range" min="0" max="100" value="${g.progress}" oninput="updateGoalProgress('${g.id}', this.value)" style="flex:1;padding:0">
+        <span style="font-size:12px;font-weight:bold;min-width:36px">${faNum(g.progress)}٪</span>
+        <button class="btn-danger" onclick="deleteGoal('${g.id}')">حذف</button>
+      </div>
+    </div>
+  `).join('') : '<div class="empty-state">هنوز هدفی تعریف نکرده‌اید.</div>';
+}
+document.getElementById('goalForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const title = document.getElementById('gTitle').value.trim();
+  if (!title) return;
+  state.goals.unshift({ id: uid(), title, scope: document.getElementById('gScope').value, progress: Math.min(100, Math.max(0, parseInt(document.getElementById('gProgress').value) || 0)) });
+  saveState(); e.target.reset(); renderGoals(); showToast('🎯 هدف جدید ثبت شد');
+});
+window.updateGoalProgress = function(id, val) { const g = state.goals.find(x => x.id === id); if (g) { g.progress = parseInt(val); saveState(); renderGoals(); } };
+window.deleteGoal = function(id) { state.goals = state.goals.filter(x => x.id !== id); saveState(); renderGoals(); };
+
+// Habits
+function calcHabitStreak(habit) {
+  const dates = habit.completedDates || [];
+  if (!dates.length) return 0;
+  let streak = 0, d = new Date();
+  for (let i = 0; i < 365; i++) {
+    const str = Jalali.format(Jalali.toJalali(d.getFullYear(), d.getMonth() + 1, d.getDate()));
+    if (dates.includes(str)) streak++; else if (i > 0) break;
+    d.setDate(d.getDate() - 1);
+  }
+  return streak;
+}
+window.toggleHabitToday = function(id) {
+  const h = state.habits.find(x => x.id === id);
+  if (!h) return;
+  if (!h.completedDates) h.completedDates = [];
+  const todayStr = Jalali.format(Jalali.today());
+  const idx = h.completedDates.indexOf(todayStr);
+  const becomingDone = idx < 0;
+  if (idx >= 0) h.completedDates.splice(idx, 1); else h.completedDates.push(todayStr);
+  saveState(); renderHabits(); renderHome();
+  if (becomingDone) {
+    document.querySelectorAll(`[data-habit-id="${id}"]`).forEach(el => {
+      el.classList.add('just-checked');
+      setTimeout(() => el.classList.remove('just-checked'), 950);
+    });
+  }
+};
+function renderHabits() {
+  const todayStr = Jalali.format(Jalali.today());
+  document.getElementById('habitsFullList').innerHTML = state.habits.length ? state.habits.map(h => {
+    const isDone = (h.completedDates || []).includes(todayStr);
+    return `
+      <div class="habit-card" data-habit-id="${h.id}">
+        <button class="habit-check ${isDone ? 'done' : ''}" onclick="if(!this.classList.contains('done')){const r=this.getBoundingClientRect();triggerCheckLightEffect(r.left+r.width/2,r.top+r.height/2);}toggleHabitToday('${h.id}')">${isDone ? '✓' : ''}</button>
+        <div style="flex:1">
+          <div class="habit-title-text" style="font-weight:800;font-size:14px">${esc(h.name)}</div>
+          <div style="font-size:11.5px;color:var(--muted);margin-top:4px">هدف: ${faNum(h.target)} روز · 🔥 زنجیره: <b>${faNum(calcHabitStreak(h))} روز</b></div>
+        </div>
+        <button class="btn-danger" onclick="deleteHabit('${h.id}')">حذف</button>
+      </div>
+    `;
+  }).join('') : '<div class="empty-state">عادت جدیدی بسازید.</div>';
+}
+document.getElementById('habitForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('hName').value.trim();
+  if (!name) return;
+  state.habits.push({ id: uid(), name, target: parseInt(document.getElementById('hTarget').value) || 7, completedDates: [] });
+  saveState(); e.target.reset(); renderHabits(); renderHome(); showToast('🔄 عادت جدید اضافه شد');
+});
+window.deleteHabit = function(id) { state.habits = state.habits.filter(x => x.id !== id); saveState(); renderHabits(); renderHome(); };
+
+// Notes
+function renderNotes() {
+  document.getElementById('notesCount').textContent = faNum(state.notes.length) + ' یادداشت';
+  document.getElementById('notesList').innerHTML = state.notes.length ? state.notes.map(n => `
+    <div class="note-item">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h4>${esc(n.title)}</h4><span style="font-size:10.5px;color:var(--muted)">${n.date || ''}</span>
+      </div>
+      <p>${esc(n.body)}</p>
+      <div style="display:flex;gap:6px;justify-content:flex-end">
+        <button class="mini-btn" onclick="editNote('${n.id}')">ویرایش</button>
+        <button class="btn-danger" onclick="deleteNote('${n.id}')">حذف</button>
+      </div>
+    </div>
+  `).join('') : '<div class="empty-state">دفترچه یادداشت خالی است.</div>';
+}
+document.getElementById('noteForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const title = document.getElementById('nTitle').value.trim();
+  const body = document.getElementById('nBody').value.trim();
+  if (!title || !body) return;
+  const dateStr = Jalali.format(Jalali.today());
+  if (editingNoteId) {
+    const n = state.notes.find(x => x.id === editingNoteId);
+    if (n) Object.assign(n, { title, body, date: dateStr });
+    editingNoteId = null;
+    document.getElementById('noteFormTitle').textContent = '📒 یادداشت درسی / شخصی جدید';
+    document.getElementById('nSaveBtn').textContent = 'ذخیره یادداشت';
+    document.getElementById('nCancelBtn').hidden = true;
+  } else {
+    state.notes.unshift({ id: uid(), title, body, date: dateStr });
+  }
+  saveState(); e.target.reset(); renderNotes(); showToast('📒 یادداشت ذخیره شد');
+});
+window.editNote = function(id) {
+  const n = state.notes.find(x => x.id === id);
+  if (!n) return;
+  editingNoteId = id;
+  document.getElementById('nTitle').value = n.title;
+  document.getElementById('nBody').value = n.body;
+  document.getElementById('noteFormTitle').textContent = '✏️ ویرایش یادداشت';
+  document.getElementById('nSaveBtn').textContent = 'به‌روزرسانی یادداشت';
+  document.getElementById('nCancelBtn').hidden = false;
+};
+document.getElementById('nCancelBtn').addEventListener('click', () => {
+  editingNoteId = null; document.getElementById('noteForm').reset();
+  document.getElementById('noteFormTitle').textContent = '📒 یادداشت درسی / شخصی جدید';
+  document.getElementById('nSaveBtn').textContent = 'ذخیره یادداشت';
+  document.getElementById('nCancelBtn').hidden = true;
+});
+window.deleteNote = function(id) { state.notes = state.notes.filter(x => x.id !== id); saveState(); renderNotes(); };
+
+/* ==========================================================================
+   9. JALALI CALENDAR & REMINDERS
+   ========================================================================== */
+let calView = Jalali.today();
+let selectedJalali = Jalali.today();
+
+function renderCalendar() {
+  document.getElementById('calMonthTitle').textContent = `${Jalali.months[calView.jm - 1]} ${faNum(calView.jy)}`;
+  document.getElementById('calDowRow').innerHTML = Jalali.weekShort.map(d => `<div class="cal-dow">${d}</div>`).join('');
+  const firstGreg = Jalali.toGregorian(calView.jy, calView.jm, 1);
+  const startOffset = (new Date(firstGreg.gy, firstGreg.gm - 1, firstGreg.gd).getDay() + 1) % 7;
+  const daysInMonth = Jalali.monthLength(calView.jy, calView.jm);
+  const todayJ = Jalali.today();
+
+  // تعطیلات رسمی تقویم ایران (ثابت شمسی + تعطیلات قمری سال‌های ۱۴۰۴ و ۱۴۰۵ و ۱۴۰۶)
+  const fixedJalaliHolidays = new Set([
+    '1/1', '1/2', '1/3', '1/4', // عید نوروز
+    '1/12', // روز جمهوری اسلامی ایران
+    '1/13', // روز طبیعت
+    '3/14', // رحلت امام خمینی
+    '3/15', // قیام ۱۵ خرداد
+    '11/22', // پیروزی انقلاب اسلامی
+    '12/29'  // روز ملی شدن صنعت نفت
+  ]);
+  const lunarMappedJalaliHolidays = new Set([
+    // سال ۱۴۰۴
+    '1404/1/11', '1404/1/12', '1404/2/4', '1404/3/16', '1404/3/24',
+    '1404/4/14', '1404/4/15', '1404/5/23', '1404/6/2', '1404/6/10', '1404/6/19',
+    '1404/9/3', '1404/10/13', '1404/10/27', '1404/11/15', '1404/12/20',
+    // سال ۱۴۰۵
+    '1405/1/1', '1405/2/25', '1405/3/6', '1405/3/14',
+    '1405/4/3', '1405/4/4', '1405/5/12', '1405/5/20', '1405/5/28', '1405/6/8',
+    '1405/8/22', '1405/10/2', '1405/10/16', '1405/11/4', '1405/12/9', '1405/12/19', '1405/12/20',
+    // سال ۱۴۰۶
+    '1406/2/14', '1406/2/22', '1406/3/2', '1406/3/23', '1406/3/24',
+    '1406/5/1', '1406/5/9', '1406/5/17', '1406/5/26',
+    '1406/8/11', '1406/9/21', '1406/10/5', '1406/10/23', '1406/11/28', '1406/12/8', '1406/12/9'
+  ]);
+  let html = '';
+  for (let i = 0; i < startOffset; i++) html += '<div class="cal-cell empty"></div>';
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${calView.jy}/${String(calView.jm).padStart(2,'0')}/${String(d).padStart(2,'0')}`;
+    const rawKey = `${calView.jy}/${calView.jm}/${d}`;
+    const colIdx = (startOffset + d - 1) % 7;
+    const isHoliday = (colIdx === 6) || fixedJalaliHolidays.has(`${calView.jm}/${d}`) || lunarMappedJalaliHolidays.has(rawKey);
+    const isToday = (calView.jy === todayJ.jy && calView.jm === todayJ.jm && d === todayJ.jd);
+    const isSel = (calView.jy === selectedJalali.jy && calView.jm === selectedJalali.jm && d === selectedJalali.jd);
+    const hasRem = state.reminders.some(r => !r.fired && r.jDate === dateStr);
+    html += `<div class="cal-cell ${isHoliday ? 'holiday' : ''} ${hasRem ? 'has-reminder-day' : ''} ${isToday ? 'today' : ''} ${isSel ? 'selected' : ''}" onclick="selectJalaliDay(${calView.jy}, ${calView.jm}, ${d})"><span>${faNum(d)}</span>${hasRem ? '<i class="has-rem"></i>' : ''}</div>`;
+  }
+  document.getElementById('calDaysGrid').innerHTML = html;
+  document.getElementById('rDate').value = Jalali.format(selectedJalali);
+  document.getElementById('selectedJalaliLabel').textContent = 'تاریخ انتخاب‌شده: ' + Jalali.formatLong(selectedJalali);
+}
+window.selectJalaliDay = function(jy, jm, jd) { selectedJalali = { jy, jm, jd }; renderCalendar(); };
+document.getElementById('calPrevMonth').addEventListener('click', () => { calView.jm--; if (calView.jm < 1) { calView.jm = 12; calView.jy--; } renderCalendar(); });
+document.getElementById('calNextMonth').addEventListener('click', () => { calView.jm++; if (calView.jm > 12) { calView.jm = 1; calView.jy++; } renderCalendar(); });
+document.getElementById('calTodayBtn').addEventListener('click', () => { calView = Jalali.today(); selectedJalali = Jalali.today(); renderCalendar(); });
+
+document.getElementById('reminderForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const title = document.getElementById('rTitle').value.trim();
+  const time = document.getElementById('rTime').value;
+  if (!title || !time) return;
+  if ('Notification' in window && Notification.permission === 'default') { await Notification.requestPermission(); updateSwBadge(true); }
+  const [hh, mm] = time.split(':').map(Number);
+  const g = Jalali.toGregorian(selectedJalali.jy, selectedJalali.jm, selectedJalali.jd);
+  const targetDate = new Date(g.gy, g.gm - 1, g.gd, hh, mm, 0, 0);
+  state.reminders.push({ id: uid(), title, jDate: Jalali.format(selectedJalali), time, triggerAt: targetDate.getTime(), repeat: document.getElementById('rRepeat').value, fired: false });
+  saveState(); document.getElementById('rTitle').value = ''; renderReminders(); renderCalendar();
+  showToast('🔔 یادآور ثبت شد');
+});
+
+function renderReminders() {
+  const sorted = [...state.reminders].sort((a, b) => a.triggerAt - b.triggerAt);
+  document.getElementById('remCountBadge').textContent = faNum(sorted.filter(r => !r.fired).length) + ' فعال';
+  const repLabels = { once: 'یک‌بار', daily: 'روزانه', weekly: 'هفتگی' };
+  document.getElementById('remindersList').innerHTML = sorted.length ? sorted.map(r => `
+    <div class="item-row ${r.fired ? 'done' : ''}">
+      <div style="font-size:20px">${r.fired ? '✅' : '⏰'}</div>
+      <div class="item-body">
+        <div class="item-title">${esc(r.title)}</div>
+        <div class="item-meta"><span>📅 ${r.jDate}</span><span>ساعت ${r.time}</span><span class="badge low">${repLabels[r.repeat]}</span></div>
+      </div>
+      <button class="btn-danger" onclick="deleteReminder('${r.id}')">حذف</button>
+    </div>
+  `).join('') : '<div class="empty-state">یادآوری ثبت نشده است.</div>';
+}
+window.deleteReminder = function(id) { state.reminders = state.reminders.filter(x => x.id !== id); saveState(); renderReminders(); renderCalendar(); };
+document.getElementById('btnReqNotif').addEventListener('click', async () => {
+  if (!('Notification' in window)) return;
+  const res = await Notification.requestPermission();
+  updateSwBadge(res === 'granted');
+  showToast(res === 'granted' ? '✅ مجوز اعلان صادر شد' : '❌ مجوز رد شد');
+});
+document.getElementById('btnTestAlarm').addEventListener('click', () => triggerAlarmUI('🔊 تست هشدار MyWeek', 'صدای زنگ و لرزش اندروید به درستی کار می‌کند!'));
+
+/* ==========================================================================
+   10. TIME MANAGEMENT (POMODORO, COUNTDOWN, STOPWATCH)
+   ========================================================================== */
+let pomoDuration = 1500, pomoRemaining = 1500, pomoMode = 'focus', pomoEnd = null, pomoId = null;
+window.setPomoMode = function(mode, mins) {
+  clearInterval(pomoId); pomoId = null; pomoEnd = null; pomoMode = mode;
+  pomoDuration = mins * 60; pomoRemaining = pomoDuration;
+  document.getElementById('pomoPhaseLabel').textContent = mode === 'focus' ? 'زمان تمرکز' : 'زمان استراحت';
+  document.getElementById('pomoToggleBtn').textContent = '▶ شروع';
+  updatePomoDisplay();
+};
+window.applyCustomPomo = function(mode) {
+  const mins = Math.min(180, Math.max(1, parseInt(document.getElementById('customPomoMins').value) || 25));
+  setPomoMode(mode, mins);
+  showToast(`⏱ زمان ${mode === 'focus' ? 'تمرکز' : 'استراحت'} روی ${faNum(mins)} دقیقه تنظیم شد`);
+};
+function updatePomoDisplay() {
+  const m = Math.floor(pomoRemaining / 60), s = pomoRemaining % 60;
+  document.getElementById('pomoClock').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  document.getElementById('pomoRing').style.setProperty('--deg', Math.round((pomoRemaining / pomoDuration) * 360) + 'deg');
+  document.getElementById('pomoSessionCount').textContent = faNum(state.stats.pomoSessions) + ' جلسه';
+}
+document.getElementById('pomoToggleBtn').addEventListener('click', () => {
+  if (pomoId) { clearInterval(pomoId); pomoId = null; document.getElementById('pomoToggleBtn').textContent = '▶ ادامه'; }
+  else {
+    pomoEnd = Date.now() + pomoRemaining * 1000;
+    document.getElementById('pomoToggleBtn').textContent = '⏸ توقف';
+    pomoId = setInterval(() => {
+      pomoRemaining = Math.max(0, Math.ceil((pomoEnd - Date.now()) / 1000));
+      updatePomoDisplay();
+      if (pomoRemaining <= 0) {
+        clearInterval(pomoId); pomoId = null;
+        if (pomoMode === 'focus') { state.stats.pomoSessions++; state.stats.focusMinutes += Math.round(pomoDuration / 60); saveState(); }
+        triggerAlarmUI('🍅 پایان جلسه پومودورو', pomoMode === 'focus' ? 'وقت استراحت است!' : 'آماده تمرکز بعدی؟');
+        setPomoMode(pomoMode === 'focus' ? 'short' : 'focus', pomoMode === 'focus' ? 5 : 25);
+      }
+    }, 250);
+  }
+});
+document.getElementById('pomoResetBtn').addEventListener('click', () => setPomoMode(pomoMode, Math.round(pomoDuration / 60)));
+
+// Countdown
+let cdRem = 600, cdEnd = null, cdId = null;
+function updateCd() {
+  const h = Math.floor(cdRem / 3600), m = Math.floor((cdRem % 3600) / 60), s = cdRem % 60;
+  document.getElementById('cdDisplay').textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+function readCd() { return (parseInt(document.getElementById('cdHour').value)||0)*3600 + (parseInt(document.getElementById('cdMin').value)||0)*60 + (parseInt(document.getElementById('cdSec').value)||0); }
+document.getElementById('cdStartBtn').addEventListener('click', () => {
+  if (cdId) { clearInterval(cdId); cdId = null; document.getElementById('cdStartBtn').textContent = '▶ ادامه'; return; }
+  if (cdRem <= 0) cdRem = readCd();
+  if (cdRem <= 0) return;
+  cdEnd = Date.now() + cdRem * 1000; document.getElementById('cdStartBtn').textContent = '⏸ توقف';
+  cdId = setInterval(() => {
+    cdRem = Math.max(0, Math.ceil((cdEnd - Date.now()) / 1000)); updateCd();
+    if (cdRem <= 0) { clearInterval(cdId); cdId = null; document.getElementById('cdStartBtn').textContent = '▶ شروع'; triggerAlarmUI('⏳ پایان تایمر معکوس', 'زمان شما به پایان رسید.'); }
+  }, 250);
+});
+document.getElementById('cdResetBtn').addEventListener('click', () => { clearInterval(cdId); cdId = null; cdRem = readCd(); document.getElementById('cdStartBtn').textContent = '▶ شروع'; updateCd(); });
+
+// Stopwatch
+let swEl = 0, swSt = null, swId = null, swLaps = [];
+function fmtSw(ms) { const t = Math.floor((ms%1000)/100), ts = Math.floor(ms/1000); return `${String(Math.floor(ts/60)).padStart(2,'0')}:${String(ts%60).padStart(2,'0')}.${t}`; }
+document.getElementById('swStartBtn').addEventListener('click', () => {
+  if (swSt) { swEl += Date.now() - swSt; swSt = null; clearInterval(swId); swId = null; document.getElementById('swStartBtn').textContent = '▶ ادامه'; }
+  else { swSt = Date.now(); document.getElementById('swStartBtn').textContent = '⏸ توقف'; swId = setInterval(() => { document.getElementById('swDisplay').textContent = fmtSw(swEl + (Date.now() - swSt)); }, 80); }
+});
+document.getElementById('swLapBtn').addEventListener('click', () => {
+  const cur = swEl + (swSt ? Date.now() - swSt : 0); if (!cur) return;
+  swLaps.unshift(fmtSw(cur));
+  document.getElementById('swLapsList').innerHTML = swLaps.map((l, i) => `<div class="item-row" style="padding:7px 4px"><span style="color:var(--muted);font-size:12px">دور ${faNum(swLaps.length - i)}</span><strong style="margin-right:auto;direction:ltr">${l}</strong></div>`).join('');
+});
+document.getElementById('swResetBtn').addEventListener('click', () => { swEl = 0; swSt = null; clearInterval(swId); swId = null; swLaps = []; document.getElementById('swDisplay').textContent = '00:00.0'; document.getElementById('swStartBtn').textContent = '▶ شروع'; document.getElementById('swLapsList').innerHTML = ''; });
+
+/* ==========================================================================
+   11. STATISTICS & THEMES
+   ========================================================================== */
+function renderStats() {
+  let totalDone = 0, sportMins = 0;
+  const dayCounts = [];
+  for (let d = 0; d < 7; d++) {
+    const doneCount = (state.tasks[d] || []).filter(t => t.done).length;
+    totalDone += doneCount;
+    dayCounts.push({ label: Jalali.weekShort[d], done: doneCount });
+    (state.sport.workouts[d] || []).forEach(w => { if (w.done) sportMins += (parseInt(w.duration) || 0); });
+  }
+  document.getElementById('stTotalDone').textContent = faNum(totalDone);
+  document.getElementById('stFocusMins').textContent = faNum(state.stats.focusMinutes);
+  document.getElementById('stSportMins').textContent = faNum(sportMins);
+
+  const maxVal = Math.max(1, ...dayCounts.map(x => x.done));
+  document.getElementById('weeklyBarChart').innerHTML = dayCounts.map(c => `
+    <div class="bar-col">
+      <div class="bar-val">${faNum(c.done)}</div>
+      <div class="bar-fill" style="height:${Math.max(6, Math.round((c.done / maxVal) * 100))}%"></div>
+      <div class="bar-lbl">${c.label}</div>
+    </div>
+  `).join('');
+
+  // Intelligent Exam Progress Analysis (Both Smart Textual Tips + Visual Chart)
+  const bySub = {};
+  [...state.exams].reverse().forEach(ex => {
+    if (!bySub[ex.subject]) bySub[ex.subject] = [];
+    bySub[ex.subject].push(ex);
+  });
+  const sEl = document.getElementById('statsSubjectsBreakdown');
+  const keys = Object.keys(bySub);
+  if (!keys.length) {
+    sEl.innerHTML = '<div class="empty-state">آزمونی ثبت نشده است. با ثبت اولین آزمون، تحلیل هوشمند و نمودار پیشرفت درس‌ها اینجا نمایش داده می‌شود.</div>';
+  } else {
+    const subStats = keys.map(k => {
+      const list = bySub[k];
+      const avg = Math.round((list.reduce((a, b) => a + b.percentage, 0) / list.length) * 10) / 10;
+      const latest = list[list.length - 1];
+      const prev = list.length > 1 ? list[list.length - 2] : null;
+      const delta = prev ? Math.round((latest.percentage - prev.percentage) * 10) / 10 : 0;
+      return { subject: k, list, avg, latest, prev, delta };
+    });
+
+    const bestSub = [...subStats].sort((a, b) => b.avg - a.avg)[0];
+    const weakSub = [...subStats].sort((a, b) => a.avg - b.avg)[0];
+    const overallAvg = Math.round((state.exams.reduce((a, b) => a + b.percentage, 0) / state.exams.length) * 10) / 10;
+
+    const smartTextBox = `
+      <div class="ai-suggestion-card" style="margin-bottom:14px">
+        <span class="tag-smart">🧠 تحلیل هوشمند روند درسی و نکات کلیدی</span>
+        <div style="font-size:12.5px;line-height:1.85">
+          <div>• <b>میانگین کل تسلط درسی:</b> <span style="color:var(--accent);font-weight:800">${faNum(overallAvg)}٪</span> در ${faNum(state.exams.length)} آزمون ثبت‌شده.</div>
+          <div>• <b>نقطه قوت شما:</b> درس <b>${esc(bestSub.subject)}</b> با میانگین <b>${faNum(bestSub.avg)}٪</b> بهترین عملکرد را دارد؛ با مرور هفتگی این تراز را تثبیت کنید.</div>
+          ${weakSub.subject !== bestSub.subject ? `<div>• <b>نیازمند توجه ویژه:</b> درس <b>${esc(weakSub.subject)}</b> با میانگین <b>${faNum(weakSub.avg)}٪</b> پایین‌ترین میانگین را دارد؛ پیشنهاد می‌شود زمان مطالعه و تست‌زنی این درس را افزایش دهید.</div>` : ''}
+          <div>• <b>نکته راهبردی:</b> ${overallAvg >= 70 ? 'روند علمی شما در سطح بسیار خوبی قرار دارد؛ روی آزمون‌های زمان‌دار و مدیریت سرعت تمرکز کنید.' : 'برای جهش در درصدها، بلافاصله پس از هر آزمون سوالات غلط و نزده را تحلیل و در دفترچه یادداشت ثبت کنید.'}</div>
+        </div>
+      </div>
+    `;
+
+    const chartBarsHtml = `
+      <div style="font-size:12px;font-weight:800;color:var(--muted);margin-bottom:6px">📊 نمودار مقایسه‌ای میانگین درس‌ها</div>
+      <div class="bar-chart" style="margin-bottom:14px">
+        ${subStats.map(s => {
+          const hPct = Math.max(8, Math.min(100, Math.round(s.avg)));
+          return `
+            <div class="bar-col">
+              <div class="bar-val">${faNum(s.avg)}٪</div>
+              <div class="bar-fill" style="height:${hPct}%"></div>
+              <div class="bar-lbl" style="max-width:58px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(s.subject)}</div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+
+    const detailedCardsHtml = subStats.map(s => {
+      const barPct = Math.max(0, Math.min(100, s.avg));
+      let tipText = '';
+      if (s.prev) {
+        tipText = s.delta > 0
+          ? `📈 رشد +${faNum(s.delta)}٪ نسبت به آزمون قبل؛ روش مطالعه فعلی شما در این درس کاملاً موثر است.`
+          : (s.delta < 0
+            ? `📉 افت ${faNum(Math.abs(s.delta))}٪ نسبت به آزمون قبل؛ مبحث «${esc(s.latest.topic)}» را مجدداً مرور و رفع اشکال کنید.`
+            : `➖ ثبات عملکرد نسبت به آزمون قبل؛ برای صعود به سطح بالاتر تعداد تست‌های زمان‌دار را بیشتر کنید.`);
+      } else {
+        tipText = s.avg >= 65
+          ? `🌟 شروع قدرتمند در مبحث «${esc(s.latest.topic)}»؛ برای حفظ آمادگی مرور منظم داشته باشید.`
+          : `💡 نقطه شروع ثبت شد؛ روی تسلط بر مفاهیم پایه «${esc(s.latest.topic)}» تمرکز کنید.`;
+      }
+      return `
+        <div style="background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:11px;margin-bottom:9px">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:5px">
+            <strong>📘 ${esc(s.subject)} <small style="color:var(--muted);font-weight:normal">(${faNum(s.list.length)} آزمون)</small></strong>
+            <strong style="color:var(--accent)">میانگین: ${faNum(s.avg)}٪</strong>
+          </div>
+          <div class="progress-track" style="margin-top:0;margin-bottom:7px"><div class="progress-fill" style="width:${barPct}%"></div></div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.6">${tipText}</div>
+        </div>
+      `;
+    }).join('');
+
+    sEl.innerHTML = smartTextBox + chartBarsHtml + detailedCardsHtml;
+  }
+}
+
+const accentColors = ['#6da3ff', '#4ade80', '#c084fc', '#fb923c', '#f43f5e', '#2dd4bf', '#facc15', '#38bdf8'];
+function applyAppearance() {
+  const th = state.settings.theme || 'dark';
+  const fx = state.settings.bgFx || 'neon';
+  document.body.className = `theme-${th} bgfx-${fx}`;
+  document.documentElement.style.setProperty('--accent', state.settings.accent);
+  document.documentElement.style.setProperty('--accent-glow', state.settings.accent + '55');
+  document.querySelectorAll('#themeGrid .theme-chip').forEach(btn => btn.classList.toggle('active', btn.dataset.th === th));
+  document.querySelectorAll('#bgFxGrid .theme-chip').forEach(btn => btn.classList.toggle('active', btn.dataset.fx === fx));
+  document.getElementById('setSound').checked = !!state.settings.sound;
+  document.getElementById('setVibrate').checked = !!state.settings.vibrate;
+  const pNotifEl = document.getElementById('setPersistentNotif');
+  if (pNotifEl) pNotifEl.checked = state.settings.persistentNotification !== false;
+  document.getElementById('setTone').value = state.settings.tone || 'chime';
+  ['setTone', 'exType', 'exDescWeakness', 'tPriority', 'gScope', 'hTarget', 'spCategory', 'rRepeat'].forEach(syncCustomPickerLabel);
+  syncTimePickerLabel('tTime');
+  syncTimePickerLabel('rTime');
+  document.getElementById('colorSwatches').innerHTML = accentColors.map(c => `<div class="swatch ${state.settings.accent === c ? 'active' : ''}" style="background:${c}" onclick="setAccentColor('${c}')"></div>`).join('');
+}
+document.querySelectorAll('#themeGrid .theme-chip').forEach(btn => btn.addEventListener('click', () => { state.settings.theme = btn.dataset.th; saveState(); applyAppearance(); syncPersistentDailyNotification(); }));
+document.querySelectorAll('#bgFxGrid .theme-chip').forEach(btn => btn.addEventListener('click', () => { state.settings.bgFx = btn.dataset.fx; saveState(); applyAppearance(); syncPersistentDailyNotification(); }));
+window.setAccentColor = function(hex) { state.settings.accent = hex; saveState(); applyAppearance(); syncPersistentDailyNotification(); };
+document.getElementById('setSound').addEventListener('change', e => { state.settings.sound = e.target.checked; saveState(); });
+document.getElementById('setVibrate').addEventListener('change', e => { state.settings.vibrate = e.target.checked; saveState(); });
+document.getElementById('setPersistentNotif').addEventListener('change', async e => {
+  state.settings.persistentNotification = e.target.checked;
+  if (e.target.checked && 'Notification' in window && Notification.permission !== 'granted') {
+    const perm = await Notification.requestPermission();
+    updateSwBadge(perm === 'granted');
+  }
+  saveState();
+  showToast(e.target.checked ? '📌 اعلان دائمی نوار گوشی فعال شد' : '🔕 اعلان دائمی غیرفعال شد');
+});
+
+/* ==================== TOUCH SWIPE NAVIGATION BETWEEN TABS ==================== */
+const swipeTabsOrder = ['home', 'plan', 'sport', 'reminders', 'time', 'stats'];
+let touchStartX = 0, touchStartY = 0;
+document.addEventListener('touchstart', e => {
+  if (e.target.closest('.picker-sheet-backdrop, input[type="range"], .time-col-box, .seg-control')) return;
+  touchStartX = e.changedTouches[0].clientX;
+  touchStartY = e.changedTouches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  if (!touchStartX) return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  touchStartX = 0;
+  if (Math.abs(dx) < 65 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+  const activeEl = document.querySelector('.tab-view.active');
+  if (!activeEl) return;
+  const curTab = activeEl.id.replace('tab-', '');
+  const idx = swipeTabsOrder.indexOf(curTab);
+  if (idx === -1) return;
+  // RTL layout: swipe right (dx > 0) moves forward to next tab, swipe left (dx < 0) moves back
+  if (dx > 0 && idx < swipeTabsOrder.length - 1) {
+    switchTab(swipeTabsOrder[idx + 1]);
+  } else if (dx < 0 && idx > 0) {
+    switchTab(swipeTabsOrder[idx - 1]);
+  }
+}, { passive: true });
+
+
+/* ==================== 60FPS ANIMATED LIGHTING & CHECK-BURST ENGINE ==================== */
+const bgCanvas = document.getElementById('bgFxCanvas');
+const bgCtx = bgCanvas ? bgCanvas.getContext('2d') : null;
+let bgW = 0, bgH = 0, bgParticles = [], bgTick = 0;
+let checkBursts = [];
+
+function resizeBgCanvas() {
+  if (!bgCanvas) return;
+  const rect = bgCanvas.getBoundingClientRect();
+  bgW = bgCanvas.width = Math.round(rect.width || window.innerWidth);
+  bgH = bgCanvas.height = Math.round(rect.height || window.innerHeight);
+  bgParticles = Array.from({ length: 68 }, () => ({
+    x: Math.random() * bgW,
+    y: Math.random() * bgH,
+    r: 1.8 + Math.random() * 3.4,
+    vx: (Math.random() - 0.5) * 0.9,
+    vy: -0.45 - Math.random() * 1.05,
+    phase: Math.random() * Math.PI * 2
+  }));
+}
+window.addEventListener('resize', resizeBgCanvas);
+resizeBgCanvas();
+
+function hexToRgba(hex, alpha) {
+  const clean = (hex || '#6da3ff').replace('#', '');
+  const num = parseInt(clean.length === 3 ? clean.split('').map(c => c + c).join('') : clean, 16);
+  const r = (num >> 16) & 255;
+  const g = (num >> 8) & 255;
+  const b = num & 255;
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+window.triggerCheckLightEffect = function(x, y) {
+  const fx = (state.settings && state.settings.bgFx) || 'neon';
+  const accent = (state.settings && state.settings.accent) || '#6da3ff';
+  const cx = (typeof x === 'number' && !isNaN(x)) ? x : bgW * 0.5;
+  const cy = (typeof y === 'number' && !isNaN(y)) ? y : bgH * 0.45;
+
+  const count = fx === 'particles' ? 42 : (fx === 'cyber' ? 16 : 24);
+  const sparks = Array.from({ length: count }, (_, i) => {
+    const ang = fx === 'cyber'
+      ? (Math.PI / 2) * (i % 4) + (Math.random() - 0.5) * 0.15
+      : (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.25;
+    const spd = (fx === 'particles' ? 3.2 : 2.2) + Math.random() * 5.8;
+    return {
+      x: cx, y: cy,
+      prevX: cx, prevY: cy,
+      vx: Math.cos(ang) * spd,
+      vy: Math.sin(ang) * spd,
+      size: (fx === 'particles' ? 3.4 : 2.5) + Math.random() * 3.0,
+      color: i % 3 === 0 ? '#ffffff' : (i % 2 === 0 ? accent : (fx === 'aurora' ? '#c084fc' : '#4ade80'))
+    };
+  });
+
+  checkBursts.push({
+    x: cx, y: cy,
+    fx, accent,
+    life: 1.0,
+    sparks
+  });
+};
+
+// Capture exact viewport coordinates at touch/pointer down and click so there is ZERO vertical offset
+let lastPointerPos = null;
+document.addEventListener('pointerdown', e => {
+  const t = e.target;
+  if (t && t.matches('input[type="checkbox"]') && !t.checked && t.id !== 'setSound' && t.id !== 'setVibrate') {
+    const rect = t.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    t.dataset.burstX = String(cx);
+    t.dataset.burstY = String(cy);
+    lastPointerPos = { x: cx, y: cy, ts: Date.now() };
+  }
+}, true);
+
+document.addEventListener('change', e => {
+  const t = e.target;
+  if (t && t.matches('input[type="checkbox"]') && t.checked && t.id !== 'setSound' && t.id !== 'setVibrate') {
+    const bx = parseFloat(t.dataset.burstX);
+    const by = parseFloat(t.dataset.burstY);
+    if (!isNaN(bx) && !isNaN(by)) {
+      triggerCheckLightEffect(bx, by);
+    } else if (lastPointerPos && (Date.now() - lastPointerPos.ts < 800)) {
+      triggerCheckLightEffect(lastPointerPos.x, lastPointerPos.y);
+    } else {
+      const rect = t.getBoundingClientRect();
+      triggerCheckLightEffect(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    }
+  }
+}, true);
+
+// Helper to map perimeter distance [0..perim] onto exact screen edge (x, y)
+function getPerimeterPoint(dist, pad, w, h) {
+  const perim = 2 * (w + h);
+  let d = ((dist % perim) + perim) % perim;
+  if (d < w) return { x: pad + d, y: pad };
+  d -= w;
+  if (d < h) return { x: pad + w, y: pad + d };
+  d -= h;
+  if (d < w) return { x: pad + w - d, y: pad + h };
+  d -= w;
+  return { x: pad, y: pad + h - d };
+}
+
+function animateBgEffects() {
+  if (!bgCtx) return;
+  bgTick += 0.025;
+  bgCtx.clearRect(0, 0, bgW, bgH);
+
+  const fx = (state.settings && state.settings.bgFx) || 'neon';
+  const accent = (state.settings && state.settings.accent) || '#6da3ff';
+
+  if (fx === 'neon') {
+    // Glowing Neon Comet Point with a Long Fading Aura Tail orbiting around the screen edge
+    const pad = 5;
+    const ew = Math.max(10, bgW - pad * 2);
+    const eh = Math.max(10, bgH - pad * 2);
+    const perim = 2 * (ew + eh);
+    const headDist = (bgTick * 175) % perim;
+    const tailLen = Math.min(perim * 0.36, 560);
+    const steps = 64;
+
+    bgCtx.save();
+    bgCtx.lineCap = 'round';
+
+    // Draw smooth tapering neon tail segments
+    for (let i = 0; i < steps; i++) {
+      const t1 = i / steps;
+      const t2 = (i + 1) / steps;
+      const alpha = Math.pow(1 - t1, 1.85);
+      const p1 = getPerimeterPoint(headDist - t1 * tailLen, pad, ew, eh);
+      const p2 = getPerimeterPoint(headDist - t2 * tailLen, pad, ew, eh);
+
+      bgCtx.beginPath();
+      bgCtx.moveTo(p1.x, p1.y);
+      bgCtx.lineTo(p2.x, p2.y);
+      bgCtx.strokeStyle = i < steps * 0.25
+        ? `rgba(255,255,255,${alpha * 0.95})`
+        : hexToRgba(accent, alpha * 0.85);
+      bgCtx.lineWidth = Math.max(1.2, (1 - t1) * 6.5);
+      bgCtx.shadowColor = accent;
+      bgCtx.shadowBlur = 22 * (1 - t1);
+      bgCtx.stroke();
+    }
+
+    // Draw the bright glowing comet head orb & aura
+    const head = getPerimeterPoint(headDist, pad, ew, eh);
+    const aura = bgCtx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 68);
+    aura.addColorStop(0, 'rgba(255,255,255,0.95)');
+    aura.addColorStop(0.22, hexToRgba(accent, 0.85));
+    aura.addColorStop(0.55, hexToRgba(accent, 0.28));
+    aura.addColorStop(1, 'transparent');
+    bgCtx.fillStyle = aura;
+    bgCtx.beginPath();
+    bgCtx.arc(head.x, head.y, 68, 0, Math.PI * 2);
+    bgCtx.fill();
+
+    bgCtx.beginPath();
+    bgCtx.arc(head.x, head.y, 4.5, 0, Math.PI * 2);
+    bgCtx.fillStyle = '#ffffff';
+    bgCtx.shadowColor = '#ffffff';
+    bgCtx.shadowBlur = 18;
+    bgCtx.fill();
+    bgCtx.restore();
+
+  } else if (fx === 'aurora') {
+    for (let i = 0; i < 3; i++) {
+      const cx = bgW * (0.22 + i * 0.28 + 0.16 * Math.sin(bgTick * 0.75 + i * 2));
+      const cy = bgH * (0.28 + 0.22 * Math.cos(bgTick * 0.65 + i * 1.7));
+      const rad = Math.max(bgW, bgH) * 0.56;
+      const g = bgCtx.createRadialGradient(cx, cy, 10, cx, cy, rad);
+      const col = i === 0 ? accent : (i === 1 ? '#4ade80' : '#c084fc');
+      g.addColorStop(0, hexToRgba(col, 0.38));
+      g.addColorStop(0.55, hexToRgba(col, 0.14));
+      g.addColorStop(1, 'transparent');
+      bgCtx.fillStyle = g;
+      bgCtx.fillRect(0, 0, bgW, bgH);
+    }
+
+  } else if (fx === 'cyber') {
+    const step = 34;
+    const offset = (bgTick * 20) % step;
+    bgCtx.strokeStyle = hexToRgba(accent, 0.25);
+    bgCtx.lineWidth = 1.25;
+    bgCtx.beginPath();
+    for (let x = offset; x < bgW; x += step) {
+      bgCtx.moveTo(x, 0); bgCtx.lineTo(x, bgH);
+    }
+    for (let y = offset; y < bgH; y += step) {
+      bgCtx.moveTo(0, y); bgCtx.lineTo(bgW, y);
+    }
+    bgCtx.stroke();
+
+    const scanY = ((bgTick * 115) % (bgH + 140)) - 70;
+    const lg = bgCtx.createLinearGradient(0, scanY - 55, 0, scanY + 55);
+    lg.addColorStop(0, 'transparent');
+    lg.addColorStop(0.5, hexToRgba(accent, 0.48));
+    lg.addColorStop(1, 'transparent');
+    bgCtx.fillStyle = lg;
+    bgCtx.fillRect(0, scanY - 55, bgW, 110);
+
+  } else if (fx === 'particles') {
+    bgParticles.forEach((p, idx) => {
+      p.x += p.vx + Math.sin(bgTick + p.phase) * 0.32;
+      p.y += p.vy;
+      if (p.y < -10) { p.y = bgH + 10; p.x = Math.random() * bgW; }
+      if (p.x < -10) p.x = bgW + 10;
+      if (p.x > bgW + 10) p.x = -10;
+      const alpha = 0.48 + 0.5 * Math.sin(bgTick * 2.2 + p.phase);
+      bgCtx.beginPath();
+      bgCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      bgCtx.fillStyle = idx % 3 === 0 ? `rgba(74,222,128,${alpha})` : hexToRgba(accent, alpha);
+      bgCtx.shadowColor = accent;
+      bgCtx.shadowBlur = 15;
+      bgCtx.fill();
+    });
+    bgCtx.shadowBlur = 0;
+
+  } else if (fx === 'waves') {
+    for (let w = 0; w < 5; w++) {
+      bgCtx.beginPath();
+      const baseY = bgH * (0.16 + w * 0.17);
+      for (let x = 0; x <= bgW; x += 12) {
+        const y = baseY + Math.sin(x * 0.009 + bgTick * 1.55 + w * 1.2) * 32;
+        if (x === 0) bgCtx.moveTo(x, y); else bgCtx.lineTo(x, y);
+      }
+      bgCtx.strokeStyle = hexToRgba(w % 2 === 0 ? accent : '#4ade80', 0.40);
+      bgCtx.lineWidth = 3.2;
+      bgCtx.stroke();
+    }
+
+  } else if (fx === 'spotlight') {
+    const sx = bgW * (0.5 + 0.45 * Math.sin(bgTick * 0.7));
+    const sy = bgH * (0.38 + 0.35 * Math.cos(bgTick * 0.55));
+    const sg = bgCtx.createRadialGradient(sx, sy, 10, sx, sy, Math.max(bgW, bgH) * 0.58);
+    sg.addColorStop(0, hexToRgba(accent, 0.48));
+    sg.addColorStop(0.5, hexToRgba(accent, 0.20));
+    sg.addColorStop(1, 'transparent');
+    bgCtx.fillStyle = sg;
+    bgCtx.fillRect(0, 0, bgW, bgH);
+  }
+
+  // Distinct interactive check bursts matched to each of the 6 background modes
+  for (let i = checkBursts.length - 1; i >= 0; i--) {
+    const b = checkBursts[i];
+    b.life -= 0.025;
+    if (b.life <= 0) { checkBursts.splice(i, 1); continue; }
+
+    const progress = 1 - b.life;
+    bgCtx.save();
+
+    if (b.fx === 'neon') {
+      // 1. NEON: Electric dual-ring laser pulse + bright neon rays
+      for (let ring = 0; ring < 2; ring++) {
+        const rProg = Math.max(0, progress - ring * 0.14);
+        if (rProg > 0) {
+          const rad = 8 + rProg * (130 + ring * 35);
+          bgCtx.beginPath();
+          bgCtx.arc(b.x, b.y, rad, 0, Math.PI * 2);
+          bgCtx.strokeStyle = hexToRgba(ring === 0 ? '#ffffff' : b.accent, b.life * 0.95);
+          bgCtx.lineWidth = (5.2 - ring * 2) * b.life;
+          bgCtx.shadowColor = b.accent;
+          bgCtx.shadowBlur = 26;
+          bgCtx.stroke();
+        }
+      }
+    } else if (b.fx === 'aurora') {
+      // 2. AURORA: Multi-color swirling ethereal mist (Green + Purple + Accent)
+      const rad = 18 + progress * 165;
+      const ag = bgCtx.createRadialGradient(b.x, b.y, 2, b.x, b.y, rad);
+      ag.addColorStop(0, `rgba(255,255,255,${b.life * 0.85})`);
+      ag.addColorStop(0.28, hexToRgba('#4ade80', b.life * 0.72));
+      ag.addColorStop(0.62, hexToRgba('#c084fc', b.life * 0.52));
+      ag.addColorStop(0.85, hexToRgba(b.accent, b.life * 0.28));
+      ag.addColorStop(1, 'transparent');
+      bgCtx.fillStyle = ag;
+      bgCtx.beginPath();
+      bgCtx.arc(b.x, b.y, rad, 0, Math.PI * 2);
+      bgCtx.fill();
+    } else if (b.fx === 'cyber') {
+      // 3. CYBER: Rotating HUD target squares + digital crosshair beams
+      const half = 10 + progress * 95;
+      bgCtx.strokeStyle = hexToRgba(b.accent, b.life * 0.95);
+      bgCtx.lineWidth = 2.8;
+      bgCtx.shadowColor = b.accent;
+      bgCtx.shadowBlur = 16;
+      bgCtx.strokeRect(b.x - half, b.y - half, half * 2, half * 2);
+
+      bgCtx.save();
+      bgCtx.translate(b.x, b.y);
+      bgCtx.rotate(progress * Math.PI * 0.5);
+      const innerHalf = half * 0.65;
+      bgCtx.strokeStyle = hexToRgba('#4ade80', b.life * 0.85);
+      bgCtx.strokeRect(-innerHalf, -innerHalf, innerHalf * 2, innerHalf * 2);
+      bgCtx.restore();
+
+      bgCtx.beginPath();
+      bgCtx.moveTo(b.x - half - 22, b.y); bgCtx.lineTo(b.x + half + 22, b.y);
+      bgCtx.moveTo(b.x, b.y - half - 22); bgCtx.lineTo(b.x, b.y + half + 22);
+      bgCtx.stroke();
+    } else if (b.fx === 'particles') {
+      // 4. PARTICLES: Dense galactic stardust explosion with glowing core flash
+      const coreRad = 10 + progress * 55;
+      const cg = bgCtx.createRadialGradient(b.x, b.y, 0, b.x, b.y, coreRad);
+      cg.addColorStop(0, `rgba(255,255,255,${b.life})`);
+      cg.addColorStop(0.5, hexToRgba(b.accent, b.life * 0.6));
+      cg.addColorStop(1, 'transparent');
+      bgCtx.fillStyle = cg;
+      bgCtx.beginPath();
+      bgCtx.arc(b.x, b.y, coreRad, 0, Math.PI * 2);
+      bgCtx.fill();
+    } else if (b.fx === 'waves') {
+      // 5. WAVES: 4 rhythmic water/sound ripples expanding outward
+      for (let rIdx = 0; rIdx < 4; rIdx++) {
+        const delay = rIdx * 0.13;
+        if (progress > delay) {
+          const rRad = 8 + (progress - delay) * 155;
+          bgCtx.beginPath();
+          bgCtx.arc(b.x, b.y, rRad, 0, Math.PI * 2);
+          bgCtx.strokeStyle = hexToRgba(rIdx % 2 === 0 ? b.accent : '#4ade80', b.life * (0.9 - rIdx * 0.15));
+          bgCtx.lineWidth = (3.6 - rIdx * 0.5) * b.life;
+          bgCtx.stroke();
+        }
+      }
+    } else if (b.fx === 'spotlight') {
+      // 6. SPOTLIGHT: Intense golden-white beam flash + volumetric sunbeams
+      const rad = 16 + progress * 155;
+      const sg = bgCtx.createRadialGradient(b.x, b.y, 0, b.x, b.y, rad);
+      sg.addColorStop(0, `rgba(255,255,255,${b.life * 0.98})`);
+      sg.addColorStop(0.32, hexToRgba('#facc15', b.life * 0.68));
+      sg.addColorStop(0.68, hexToRgba(b.accent, b.life * 0.38));
+      sg.addColorStop(1, 'transparent');
+      bgCtx.fillStyle = sg;
+      bgCtx.beginPath();
+      bgCtx.arc(b.x, b.y, rad, 0, Math.PI * 2);
+      bgCtx.fill();
+    }
+
+    // Sparks tailored per mode
+    const sparkLimit = b.fx === 'particles' ? b.sparks.length : (b.fx === 'waves' ? 8 : 16);
+    for (let s = 0; s < sparkLimit; s++) {
+      const sp = b.sparks[s];
+      sp.prevX = sp.x;
+      sp.prevY = sp.y;
+      sp.x += sp.vx;
+      sp.y += sp.vy;
+      sp.vx *= 0.96;
+      sp.vy = sp.vy * 0.96 + (b.fx === 'particles' ? 0.03 : 0.06);
+
+      bgCtx.beginPath();
+      bgCtx.moveTo(sp.prevX, sp.prevY);
+      bgCtx.lineTo(sp.x, sp.y);
+      bgCtx.strokeStyle = hexToRgba(sp.color, b.life * 0.88);
+      bgCtx.lineWidth = sp.size * b.life;
+      bgCtx.lineCap = 'round';
+      bgCtx.stroke();
+
+      bgCtx.beginPath();
+      bgCtx.arc(sp.x, sp.y, sp.size * 0.75 * b.life, 0, Math.PI * 2);
+      bgCtx.fillStyle = `rgba(255,255,255,${b.life})`;
+      bgCtx.fill();
+    }
+
+    bgCtx.restore();
+  }
+
+  requestAnimationFrame(animateBgEffects);
+}
+requestAnimationFrame(animateBgEffects);
+
+function initAllViews() {
+  applyAppearance(); renderHome(); renderWeeklyPlanner(); renderExamsAll();
+  renderSportAll(); renderGoals(); renderHabits(); renderNotes();
+  renderCalendar(); renderReminders(); updatePomoDisplay(); updateCd(); renderStats();
+}
+
+loadAndMigrateData();
+initAndroidPWAAndWorker();
+initAllViews();
+</script>
+</body>
+</html>
